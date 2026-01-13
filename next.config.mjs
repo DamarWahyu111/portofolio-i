@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const isGithubPages = process.env.GITHUB_PAGES === 'true'
+const basePath = isGithubPages ? '/portofolio-i' : ''
+
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -8,9 +11,14 @@ const nextConfig = {
     unoptimized: true,
   },
   
-  swcMinify: true,
   reactStrictMode: true,
   compress: true,
+  
+  // Untuk GitHub Pages
+  output: isGithubPages ? 'export' : undefined,
+  basePath: basePath,
+  assetPrefix: basePath,
+  trailingSlash: true,
   
   async headers() {
     return [
