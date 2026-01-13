@@ -63,12 +63,6 @@ export default function Contact() {
                 value: "Bekasi, Indonesia",
                 link: "#",
               },
-              {
-                icon: "🔗",
-                title: "SOCIAL MEDIA",
-                value: "GITHUB • LINKEDIN • TWITTER",
-                link: "#",
-              },
             ].map((contact, i) => (
               <div key={i} className="flex gap-4">
                 <div className="text-3xl flex-shrink-0">{contact.icon}</div>

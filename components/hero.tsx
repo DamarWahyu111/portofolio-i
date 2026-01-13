@@ -33,9 +33,9 @@ export default function Hero() {
             FRONTEND DEVELOPER &amp; BACKEND DEVELOPER
           </p>
           <p className="text-base font-space-mono leading-relaxed text-[rgb(130,140,160)] mb-8 max-w-xl">
-            Sebagai lulusan dari CEP-CCIT FTUI yang tertarik pada front-end dan back-end, saya senang mengubah ide
-            menjadi produk nyata. Saya berfokus pada performa dan aksesibilitas, dipadukan dengan desain yang rapi agar
-            setiap interaksi terasa intuitif.
+            As a graduate of CEP-CCIT FTUI with an interest in front-end and back-end development, 
+            I enjoy turning ideas into tangible products. I focus on performance and accessibility, 
+            combined with clean design so that every interaction feels intuitive.
           </p>
 
           {/* CTA Buttons */}
