@@ -131,7 +131,7 @@ export default function AboutPage() {
           <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             <div className="border-2 border-[rgb(0,217,255)]/30 rounded-lg p-4 md:p-6 text-center hover:border-[rgb(0,217,255)] transition-all duration-300">
               <div className="text-2xl md:text-4xl font-black font-orbitron text-[rgb(255,102,0)] mb-1 md:mb-2">
-                3+
+                1+
               </div>
               <p className="text-[10px] md:text-sm font-space-mono text-[rgb(170,180,196)] uppercase tracking-wide">
                 Years of Learning
@@ -139,7 +139,7 @@ export default function AboutPage() {
             </div>
             <div className="border-2 border-[rgb(0,217,255)]/30 rounded-lg p-4 md:p-6 text-center hover:border-[rgb(0,217,255)] transition-all duration-300">
               <div className="text-2xl md:text-4xl font-black font-orbitron text-[rgb(255,102,0)] mb-1 md:mb-2">
-                50+
+                10+
               </div>
               <p className="text-[10px] md:text-sm font-space-mono text-[rgb(170,180,196)] uppercase tracking-wide">
                 Projects Built
