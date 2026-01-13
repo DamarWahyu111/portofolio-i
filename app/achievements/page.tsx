@@ -102,7 +102,7 @@ export default function AchievementsPage() {
     <main className="min-h-screen">
       <Header />
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Back Button */}
           <Link
             href="/organizations"
@@ -122,7 +122,7 @@ export default function AchievementsPage() {
           </p>
 
           {/* Achievements Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {achievements.map((achievement) => (
               <div
                 key={achievement.id}
@@ -133,10 +133,10 @@ export default function AchievementsPage() {
                 }}
               >
                 {/* Certificate Preview */}
-                <div className="relative w-full h-64 overflow-hidden bg-[rgb(15,23,52)] flex items-center justify-center">
+                <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden bg-[rgb(15,23,52)] flex items-center justify-center">
                   {achievement.image.endsWith(".pdf") ? (
                     <div className="text-center p-4">
-                      <div className="text-6xl md:text-7xl mb-4">📄</div>
+                      <div className="text-5xl md:text-7xl mb-3 md:mb-4">📄</div>
                       <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] uppercase tracking-wider">
                         PDF Certificate
                       </p>
@@ -154,13 +154,13 @@ export default function AchievementsPage() {
 
                 {/* Content */}
                 <div className="p-4 md:p-6 bg-[rgb(15,23,52)]/60 backdrop-blur-sm">
-                  <h3 className="text-lg md:text-xl font-black font-orbitron text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors mb-2">
+                  <h3 className="text-base md:text-xl font-black font-orbitron text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors mb-2">
                     {achievement.title}
                   </h3>
-                  <p className="text-xs md:text-sm font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-1">
+                  <p className="text-[11px] md:text-sm font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-1">
                     {achievement.issuer}
                   </p>
-                  <p className="text-xs font-space-mono text-[rgb(130,140,160)] mb-2">{achievement.date}</p>
+                  <p className="text-[11px] md:text-xs font-space-mono text-[rgb(130,140,160)] mb-1 md:mb-2">{achievement.date}</p>
                   {/* <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] line-clamp-2">
                     {achievement.description}
                   </p> */}
@@ -187,7 +187,7 @@ export default function AchievementsPage() {
           onClick={() => setSelectedAchievement(null)}
         >
           <div
-            className="relative max-w-4xl w-full max-h-[90vh] overflow-auto border-2 border-[rgb(0,217,255)] rounded-lg bg-[rgb(15,23,52)] p-6 md:p-8"
+            className="relative max-w-4xl w-full max-h-[90vh] md:max-h-[92vh] overflow-auto border-2 border-[rgb(0,217,255)] rounded-lg bg-[rgb(15,23,52)] p-4 md:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -198,18 +198,18 @@ export default function AchievementsPage() {
             </button>
             {selectedAchievement && (
               <>
-                <h2 className="text-2xl md:text-3xl font-black font-orbitron text-[rgb(0,217,255)] mb-2">
+                <h2 className="text-xl md:text-3xl font-black font-orbitron text-[rgb(0,217,255)] mb-2">
                   {achievements.find((a) => a.id === selectedAchievement)?.title}
                 </h2>
-                <p className="text-sm md:text-base font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-2">
+                <p className="text-xs md:text-base font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-2">
                   {achievements.find((a) => a.id === selectedAchievement)?.issuer}
                 </p>
-                <p className="text-sm font-space-mono text-[rgb(130,140,160)] mb-4">
+                <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] mb-4">
                   {achievements.find((a) => a.id === selectedAchievement)?.date}
                 </p>
 
                 {/* PDF Viewer or Image */}
-                <div className="relative w-full h-[600px] md:h-[700px] mb-6 border-2 border-[rgb(0,217,255)]/30 rounded overflow-hidden">
+                <div className="relative w-full h-[65vh] md:h-[70vh] mb-5 md:mb-6 border-2 border-[rgb(0,217,255)]/30 rounded overflow-hidden">
                   {achievements.find((a) => a.id === selectedAchievement)?.image.endsWith(".pdf") ? (
                     <iframe
                       src={`${achievements.find((a) => a.id === selectedAchievement)?.image}#toolbar=0`}
@@ -228,7 +228,7 @@ export default function AchievementsPage() {
 
                 {/* Download Button */}
                 {achievements.find((a) => a.id === selectedAchievement)?.image.endsWith(".pdf") && (
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <a
                       href={achievements.find((a) => a.id === selectedAchievement)?.image}
                       download
