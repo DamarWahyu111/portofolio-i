@@ -18,19 +18,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname !== "/") {
-      e.preventDefault()
-      window.location.href = "/#about"
-    } else {
-      e.preventDefault()
-      const element = document.getElementById("about")
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" })
-      }
-    }
-  }
-
   const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") {
       e.preventDefault()
@@ -49,7 +36,7 @@ export default function Header() {
     href: string
     onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   }> = [
-    { label: "ABOUT", href: "#about", onClick: handleAboutClick },
+    { label: "ABOUT", href: "/about" },
     { label: "PROJECTS", href: "#projects", onClick: handleProjectsClick },
     { label: "SKILLS", href: "/skills" },
     { label: "ORG", href: "/organizations" },
