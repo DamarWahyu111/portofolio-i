@@ -54,7 +54,7 @@ export default function Contact() {
               {
                 icon: "📱",
                 title: "PHONE",
-                value: "+62 823-7686-909",
+                value: "+62 878-7498-9010",
                 link: "tel:+622327686909",
               },
               {
