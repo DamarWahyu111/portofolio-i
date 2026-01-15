@@ -2,15 +2,18 @@
 
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import type { Project } from "@/lib/types" // Assuming you have a Project type defined
+import type { Project } from "@/lib/types"
 
 interface ProjectDetailClientProps {
   project: Project | undefined
 }
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   if (!project) {
     notFound()
   }
@@ -33,7 +36,14 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
       <section className="px-4 py-8 md:py-12">
         <div className="max-w-7xl mx-auto">
           <div className="border-glow rounded-lg overflow-hidden">
-            <img src={project.hero || "/placeholder.svg"} alt={project.title} className="w-full h-auto object-cover" />
+            <Image 
+              src={project.hero || "/placeholder.svg"} 
+              alt={project.title} 
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover" 
+              priority
+            />
           </div>
         </div>
       </section>
@@ -110,11 +120,13 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
               <div
                 key={i}
                 className="border-glow rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                onClick={() => alert("Gallery image: " + (i + 1))}
+                onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image || "/placeholder.svg"}
                   alt={`${project.title} screenshot ${i + 1}`}
+                  width={400}
+                  height={300}
                   className="w-full h-40 md:h-64 object-cover hover:scale-110 transition-transform duration-300"
                 />
               </div>
@@ -140,6 +152,33 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
       </section>
 
       <Footer />
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[rgb(10,14,39)]/95 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[90vh] overflow-hidden border-2 border-[rgb(0,217,255)] rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 text-[rgb(255,102,0)] hover:text-[rgb(0,217,255)] text-3xl font-black transition-colors bg-[rgb(10,14,39)]/80 w-10 h-10 flex items-center justify-center rounded-full"
+            >
+              ✕
+            </button>
+            <Image
+              src={selectedImage}
+              alt="Gallery view"
+              width={1200}
+              height={800}
+              className="w-full h-auto object-contain max-h-[85vh]"
+            />
+          </div>
+        </div>
+      )}
     </main>
   )
 }

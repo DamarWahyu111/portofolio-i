@@ -7,12 +7,14 @@ import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 import { useState } from "react"
 
+// Achievement/Certificate data
 const achievements = [
   {
     id: 1,
     title: "ASEAN Data Science",
     issuer: "ASEAN Foundation",
     date: "2024",
+    category: "Data Science",
     image: "/img/certificates/ASEAN Data Science _ Sertifikat Damar Wahyu Putra.pdf",
   },
   {
@@ -20,6 +22,7 @@ const achievements = [
     title: "Completion Certificate SkillsBuild",
     issuer: "IBM SkillsBuild",
     date: "2025",
+    category: "Professional IT",
     image: "/img/certificates/Completion Certificate _ SkillsBuild.pdf",
   },
   {
@@ -27,6 +30,7 @@ const achievements = [
     title: "Completion Certificate 2 SkillsBuild",
     issuer: "IBM SkillsBuild",
     date: "2025",
+    category: "Professional IT",
     image: "/img/certificates/Completion Certificate 2 _ SkillsBuild.pdf",
   },
   {
@@ -34,6 +38,7 @@ const achievements = [
     title: "Completion Certificate 3 SkillsBuild",
     issuer: "IBM SkillsBuild",
     date: "2025",
+    category: "Professional IT",
     image: "/img/certificates/Completion Certificate 3 _ SkillsBuild.pdf",
   },
   {
@@ -41,6 +46,7 @@ const achievements = [
     title: "Professional Software Engineering",
     issuer: "Professional Certification",
     date: "2025",
+    category: "Professional IT",
     image: "/img/certificates/Sertifikasi_Professional_Software_Engineering_Damar Wahyu Putra (1).pdf",
   },
   {
@@ -48,6 +54,7 @@ const achievements = [
     title: "Code Generation and Optimization - Wave 3",
     issuer: "Certification Program",
     date: "2025",
+    category: "Professional IT",
     image: "/img/certificates/Sertifikat Code Generation and Optimization - Wave 3 (1).pdf",
   },
   {
@@ -55,6 +62,7 @@ const achievements = [
     title: "Workshop Laravel",
     issuer: "Workshop Certification",
     date: "2024",
+    category: "Web Development",
     image: "/img/certificates/Sertifikat-Workshop Laravel-Damar Wahyu Putra.pdf",
   },
   {
@@ -62,6 +70,7 @@ const achievements = [
     title: "TOEFL Certificate",
     issuer: "TOEFL",
     date: "2025",
+    category: "Language",
     image: "/img/certificates/Toefl-Damar Wahyu Putra (1).pdf",
   },
   {
@@ -69,6 +78,7 @@ const achievements = [
     title: "HTML5 Certificate",
     issuer: "Course Certification",
     date: "2024",
+    category: "Web Development",
     image: "/img/certificates/UC-HTML5-Certifpdf.pdf",
   },
   {
@@ -76,26 +86,32 @@ const achievements = [
     title: "Course Certificate - Gen AI",
     issuer: "Course Platform",
     date: "2025",
+    category: "AI & Technology",
     image: "/img/certificates/sertifikat_course_use_gen_ai.pdf",
   },
   {
     id: 11,
     title: "Course Certificate",
     issuer: "Course Platform",
-    date: "2025",
+    date: "2024",
+    category: "General",
     image: "/img/certificates/sertifikat_course_862_4145078_100625144651.pdf",
   },
   {
     id: 12,
-    title: "Additional Certificate Peserta Lomba",
+    title: "Additional Certificate",
     issuer: "Certification Body",
     date: "2025",
+    category: "General",
     image: "/img/certificates/Damar Wahyu Putra (4) (1).pdf",
   },
 ]
 
 export default function AchievementsPage() {
   const [selectedAchievement, setSelectedAchievement] = useState<number | null>(null)
+
+  // Get unique categories
+  const categories = [...new Set(achievements.map(a => a.category))]
 
   return (
     <main className="min-h-screen">
@@ -120,53 +136,60 @@ export default function AchievementsPage() {
             Koleksi sertifikat dan pencapaian yang telah saya raih melalui pembelajaran dan pengalaman profesional.
           </p>
 
-          {/* Achievements Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {achievements.map((achievement) => (
-              <div
-                key={achievement.id}
-                className="border-2 border-[rgb(0,217,255)] rounded-lg overflow-hidden hover:border-[rgb(255,102,0)] transition-all duration-300 group hover:shadow-2xl hover:shadow-[rgb(0,217,255)]/20 cursor-pointer slide-in-skill"
-                onClick={() => setSelectedAchievement(achievement.id)}
-                style={{
-                  animationDelay: `${(achievement.id - 1) * 0.1}s`,
-                }}
-              >
-                {/* Certificate Preview */}
-                <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden bg-[rgb(15,23,52)] flex items-center justify-center">
-                  {achievement.image.endsWith(".pdf") ? (
-                    <div className="text-center p-4">
-                      <div className="text-5xl md:text-7xl mb-3 md:mb-4">📄</div>
-                      <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] uppercase tracking-wider">
-                        PDF Certificate
-                      </p>
-                    </div>
-                  ) : (
-                    <Image
-                      src={achievement.image}
-                      alt={achievement.title}
-                      fill
-                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgb(10,14,39)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+          {/* Achievements by Category */}
+          {categories.map((category) => {
+            const categoryAchievements = achievements.filter(a => a.category === category)
+            return (
+              <div key={category} className="mb-16">
+                <h2 className="text-2xl md:text-3xl font-black font-orbitron text-[rgb(0,217,255)] mb-8 border-b border-[rgb(0,217,255)]/30 pb-2">
+                  {category} Certifications
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                  {categoryAchievements.map((achievement) => (
+                    <div
+                      key={achievement.id}
+                      className="border-2 border-[rgb(0,217,255)] rounded-lg overflow-hidden hover:border-[rgb(255,102,0)] transition-all duration-300 group hover:shadow-2xl hover:shadow-[rgb(0,217,255)]/20 cursor-pointer slide-in-skill"
+                      onClick={() => setSelectedAchievement(achievement.id)}
+                      style={{
+                        animationDelay: `${(achievement.id - 1) * 0.1}s`,
+                      }}
+                    >
+                      {/* Certificate Preview */}
+                      <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden bg-[rgb(15,23,52)] flex items-center justify-center">
+                        {achievement.image.endsWith(".pdf") ? (
+                          <div className="text-center p-4">
+                            <div className="text-5xl md:text-7xl mb-3 md:mb-4">📄</div>
+                            <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] uppercase tracking-wider">
+                              PDF Certificate
+                            </p>
+                          </div>
+                        ) : (
+                          <Image
+                            src={achievement.image}
+                            alt={achievement.title}
+                            fill
+                            className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[rgb(10,14,39)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
 
-                {/* Content */}
-                <div className="p-4 md:p-6 bg-[rgb(15,23,52)]/60 backdrop-blur-sm">
-                  <h3 className="text-base md:text-xl font-black font-orbitron text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors mb-2">
-                    {achievement.title}
-                  </h3>
-                  <p className="text-[11px] md:text-sm font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-1">
-                    {achievement.issuer}
-                  </p>
-                  <p className="text-[11px] md:text-xs font-space-mono text-[rgb(130,140,160)] mb-1 md:mb-2">{achievement.date}</p>
-                  {/* <p className="text-xs md:text-sm font-space-mono text-[rgb(130,140,160)] line-clamp-2">
-                    {achievement.description}
-                  </p> */}
+                      {/* Content */}
+                      <div className="p-4 md:p-6 bg-[rgb(15,23,52)]/60 backdrop-blur-sm">
+                        <h3 className="text-base md:text-xl font-black font-orbitron text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors mb-2">
+                          {achievement.title}
+                        </h3>
+                        <p className="text-[11px] md:text-sm font-space-mono text-[rgb(255,102,0)] uppercase tracking-wider mb-1">
+                          {achievement.issuer}
+                        </p>
+                        <p className="text-[11px] md:text-xs font-space-mono text-[rgb(130,140,160)] mb-1 md:mb-2">{achievement.date}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            )
+          })}
 
           {/* Empty State */}
           {achievements.length === 0 && (
