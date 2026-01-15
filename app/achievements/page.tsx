@@ -7,7 +7,6 @@ import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 import { useState } from "react"
 
-// Achievement/Certificate data
 const achievements = [
   {
     id: 1,
@@ -20,35 +19,35 @@ const achievements = [
     id: 2,
     title: "Completion Certificate SkillsBuild",
     issuer: "IBM SkillsBuild",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Completion Certificate _ SkillsBuild.pdf",
   },
   {
     id: 3,
     title: "Completion Certificate 2 SkillsBuild",
     issuer: "IBM SkillsBuild",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Completion Certificate 2 _ SkillsBuild.pdf",
   },
   {
     id: 4,
     title: "Completion Certificate 3 SkillsBuild",
     issuer: "IBM SkillsBuild",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Completion Certificate 3 _ SkillsBuild.pdf",
   },
   {
     id: 5,
     title: "Professional Software Engineering",
     issuer: "Professional Certification",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Sertifikasi_Professional_Software_Engineering_Damar Wahyu Putra (1).pdf",
   },
   {
     id: 6,
     title: "Code Generation and Optimization - Wave 3",
     issuer: "Certification Program",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Sertifikat Code Generation and Optimization - Wave 3 (1).pdf",
   },
   {
@@ -62,7 +61,7 @@ const achievements = [
     id: 8,
     title: "TOEFL Certificate",
     issuer: "TOEFL",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Toefl-Damar Wahyu Putra (1).pdf",
   },
   {
@@ -76,21 +75,21 @@ const achievements = [
     id: 10,
     title: "Course Certificate - Gen AI",
     issuer: "Course Platform",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/sertifikat_course_use_gen_ai.pdf",
   },
   {
     id: 11,
     title: "Course Certificate",
     issuer: "Course Platform",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/sertifikat_course_862_4145078_100625144651.pdf",
   },
   {
     id: 12,
-    title: "Additional Certificate",
+    title: "Additional Certificate Peserta Lomba",
     issuer: "Certification Body",
-    date: "2024",
+    date: "2025",
     image: "/img/certificates/Damar Wahyu Putra (4) (1).pdf",
   },
 ]
