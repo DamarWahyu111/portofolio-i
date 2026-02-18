@@ -33,6 +33,16 @@ const experiences = [
       "Menerapkan alur create, read, dan update antara Database ⇄ API ⇄ Frontend",
     ],
   },
+  {
+    title: "Otoritas Jasa Keuangan Internship",
+    date: "Februari 2026 - April 2026",
+    image: "/img/damOJK.jpg",
+    description:
+      "Magang di bagian Departmen Organisasi, SDM & Budaya.",
+    responsibilities: [
+      "Mengelola digitalisasi dan entri data untuk lebih dari 100+ dokumen arsip strategis ke dalam sistem basis data Excel dengan tingkat akurasi tinggi guna memastikan ketersediaan data bagi keperluan proyeksi organisasi mendatang.",
+    ],
+  },
 ]
 
 interface ExperienceProps {
