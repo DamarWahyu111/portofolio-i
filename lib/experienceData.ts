@@ -39,4 +39,19 @@ export const experiencesData = [
     ],
     icon: "💼",
   },
+  {
+    id: 3,
+    slug: "otoritas-jasa-keuangan-internship",
+    title: "Otoritas Jasa Keuangan Internship",
+    company: "Otoritas Jasa Keuangan",
+    period: "Februari 2026 - April 2026",
+    date: "Februari 2026 - April 2026",
+    image: "/img/damOJK.jpg",
+    description:
+      "Magang di bagian Departmen Organisasi, SDM & Budaya.",
+    responsibilities: [
+      "Mengelola digitalisasi dan entri data untuk lebih dari 100+ dokumen arsip strategis ke dalam sistem basis data Excel dengan tingkat akurasi tinggi guna memastikan ketersediaan data bagi keperluan proyeksi organisasi mendatang.",
+    ],
+    icon: "💼",
+  },
 ]

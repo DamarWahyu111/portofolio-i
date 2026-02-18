@@ -2,41 +2,53 @@
 
 const organizations = [
   {
-    name: "CEP-CCIT FTUI",
-    role: "Mahasiswa",
-    period: "2020 - Sekarang",
+    name: "Indorelawan",
+    role: "Ketua Grup Indorelawan",
+    subtitle: "Generasi Bebas Plastik",
+    period: "2024 - Sekarang",
+    image: "/img/oragnization/indorelawan/WhatsApp Image 2025-07-04 at 14.34.22_76452a2d.jpg",
     description:
-      "Program pendidikan terkemuka di bidang Teknik Informatika dengan fokus pada pengembangan skill practical.",
+      "Memimpin kampanye edukasi lingkungan dan mengorganisasi aksi bersih-bersih di berbagai lokasi. Menginisiasi program awareness tentang pengurangan penggunaan plastik di komunitas.",
     achievements: [
-      "Mengikuti berbagai workshop dan seminar tentang web development",
-      "Berpartisipasi dalam kompetisi programming",
-      "Mengembangkan multiple projects sebagai bagian dari kurikulum",
+      "Memimpin tim dalam kampanye edukasi lingkungan",
+      "Mengorganisasi aksi bersih-bersih di berbagai lokasi",
+      "Menginisiasi program awareness pengurangan plastik",
+      "Membangun komunitas peduli lingkungan",
     ],
-    icon: "🎓",
+    icon: "🌱",
   },
   {
-    name: "Stock-Summit UI",
-    role: "Staff Event",
+    name: "Novo Club",
+    role: "Member Novo Club",
+    subtitle: "Technology Community",
+    period: "2024 - Sekarang",
+    image: "/img/oragnization/novoclub/WhatsApp Image 2025-07-04 at 14.34.23_1a9c2079.jpg",
+    description:
+      "Aktif berpartisipasi dalam diskusi teknologi dan pengembangan diri. Membantu mengorganisasi event komunitas digital dan workshop pengembangan skill.",
+    achievements: [
+      "Berpartisipasi aktif dalam diskusi teknologi",
+      "Membantu mengorganisasi event komunitas digital",
+      "Mengikuti workshop pengembangan skill",
+      "Berbagi pengetahuan dengan anggota komunitas",
+    ],
+    icon: "💻",
+  },
+  {
+    name: "Staff Event Stock-Summit UI",
+    role: "Staff Event & MC",
+    subtitle: "University Event",
     period: "2024",
-    description: "Pengalaman dalam event management dan public speaking di acara seminar tingkat nasional.",
+    image: "/img/IMG_3833.jpg",
+    description:
+      "Berperan sebagai staff divisi event dan MC pada acara Seminar Stock-Summit UI. Mengelola koordinasi acara dan memfasilitasi jalannya seminar dengan audience yang besar.",
     achievements: [
-      "Mengelola koordinasi acara dengan ratusan peserta",
-      "Menjadi MC dan memimpin diskusi dengan expert speakers",
-      "Mendapatkan pengalaman berharga dalam komunikasi publik",
+      "Mengelola koordinasi teknis dan logistik acara seminar",
+      "Menjadi MC untuk membawakan acara di hadapan ratusan peserta",
+      "Memfasilitasi sesi Q&A dan interaksi dengan pembicara",
+      "Berkoordinasi dengan tim untuk memastikan timeline acara berjalan sesuai rencana",
+      "Membantu registrasi dan handling peserta seminar",
     ],
-    icon: "🎤",
-  },
-  {
-    name: "BPJS Ketenagakerjaan",
-    role: "Internship - Full Stack Developer",
-    period: "Agustus 2025 - November 2025",
-    description: "Pengalaman industri sebagai full-stack developer mengembangkan aplikasi internal perusahaan.",
-    achievements: [
-      "Mengembangkan REST APIs dan frontend components",
-      "Bekerja dengan tech stack production: Vue.js, Node.js, PHP",
-      "Berkolaborasi dengan team developer di lingkungan perusahaan profesional",
-    ],
-    icon: "💼",
+    icon: "💻",
   },
 ]
 

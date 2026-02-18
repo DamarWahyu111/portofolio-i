@@ -11,7 +11,7 @@ const organizations = [
     name: "Indorelawan",
     role: "Ketua Grup Indorelawan",
     subtitle: "Generasi Bebas Plastik",
-    period: "2024 - Sekarang",
+    period: "2024",
     image: "/img/oragnization/indorelawan/WhatsApp Image 2025-07-04 at 14.34.22_76452a2d.jpg",
     description:
       "Memimpin kampanye edukasi lingkungan dan mengorganisasi aksi bersih-bersih di berbagai lokasi. Menginisiasi program awareness tentang pengurangan penggunaan plastik di komunitas.",
@@ -27,7 +27,7 @@ const organizations = [
     name: "Novo Club",
     role: "Member Novo Club",
     subtitle: "Technology Community",
-    period: "2024 - Sekarang",
+    period: "2024",
     image: "/img/oragnization/novoclub/WhatsApp Image 2025-07-04 at 14.34.23_1a9c2079.jpg",
     description:
       "Aktif berpartisipasi dalam diskusi teknologi dan pengembangan diri. Membantu mengorganisasi event komunitas digital dan workshop pengembangan skill.",
@@ -36,6 +36,23 @@ const organizations = [
       "Membantu mengorganisasi event komunitas digital",
       "Mengikuti workshop pengembangan skill",
       "Berbagi pengetahuan dengan anggota komunitas",
+    ],
+    icon: "💻",
+  },
+  {
+    name: "Staff Event Stock-Summit UI",
+    role: "Staff Event & MC",
+    subtitle: "University Event",
+    period: "2024",
+    image: "/img/IMG_3833.jpg",
+    description:
+      "Berperan sebagai staff divisi event dan MC pada acara Seminar Stock-Summit UI. Mengelola koordinasi acara dan memfasilitasi jalannya seminar dengan audience yang besar.",
+    achievements: [
+      "Mengelola koordinasi teknis dan logistik acara seminar",
+      "Menjadi MC untuk membawakan acara di hadapan ratusan peserta",
+      "Memfasilitasi sesi Q&A dan interaksi dengan pembicara",
+      "Berkoordinasi dengan tim untuk memastikan timeline acara berjalan sesuai rencana",
+      "Membantu registrasi dan handling peserta seminar",
     ],
     icon: "💻",
   },
