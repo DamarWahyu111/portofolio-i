@@ -35,12 +35,28 @@ const experiences = [
   },
   {
     title: "Otoritas Jasa Keuangan Internship",
-    date: "Februari 2026 - April 2026",
+    date: "Feb 2026 - Present",
     image: "/img/damOJK.jpg",
     description:
       "Magang di bagian Departmen Organisasi, SDM & Budaya.",
-    responsibilities: [
-      "Mengelola digitalisasi dan entri data untuk lebih dari 100+ dokumen arsip strategis ke dalam sistem basis data Excel dengan tingkat akurasi tinggi guna memastikan ketersediaan data bagi keperluan proyeksi organisasi mendatang.",
+    divisions: [
+      {
+        name: "Human Resources and Culture Organization - DOPS",
+        period: "Apr 2026 - Present (2 mos)",
+        responsibilities: [
+          "Otomatiskan proses pengelolaan dokumen dengan mengintegrasikan data Excel ke dalam Word melalui sistem Mail Merge untuk meningkatkan efisiensi kerja.",
+          "Kembangkan dasbor Excel interaktif untuk memantau dan memvisualisasikan data organisasi untuk periode Januari–Juni 2026.",
+          "Melakukan verifikasi dan pengendalian mutu terhadap lebih dari 100 dokumen sertifikat PCT OJK untuk memastikan keakuratan data sebelum didistribusikan ke berbagai kantor wilayah.",
+        ],
+      },
+      {
+        name: "Human Resources and Culture Organization - LMSt (Layanan Managemstis-1)",
+        period: "Feb 2026 - Mar 2026 (2 mos)",
+        responsibilities: [
+          "Mengelola digitalisasi dan input data dari lebih dari 500+ dokumen arsip strategis ke dalam database Excel.",
+          "Memastikan tingkat akurasi yang tinggi untuk menjamin ketersediaan data dalam proyeksi organisasi di masa depan.",
+        ],
+      },
     ],
   },
 ]
@@ -115,14 +131,41 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
               <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-[rgb(0,217,255)]">
                 Tanggung Jawab & Pencapaian
               </h4>
-              <ul className="space-y-3 md:space-y-3.5">
-                {experiences[selected].responsibilities.map((resp, i) => (
-                  <li key={i} className="flex gap-3 text-sm md:text-base text-[rgb(130,140,160)]">
-                    <span className="text-[rgb(255,102,0)] font-bold flex-shrink-0 mt-0.5">▸</span>
-                    <span>{resp}</span>
-                  </li>
-                ))}
-              </ul>
+
+              {/* Handle kedua struktur: divisions atau responsibilities */}
+              {experiences[selected].divisions ? (
+                <div className="space-y-6">
+                  {experiences[selected].divisions.map((division, i) => (
+                    <div key={i}>
+                      <div className="mb-3">
+                        <h5 className="text-sm md:text-base font-bold text-[rgb(0,217,255)] mb-1">
+                          {division.name}
+                        </h5>
+                        <p className="text-xs md:text-sm text-[rgb(255,102,0)] uppercase tracking-widest">
+                          {division.period}
+                        </p>
+                      </div>
+                      <ul className="space-y-3 md:space-y-3.5">
+                        {division.responsibilities.map((resp, j) => (
+                          <li key={j} className="flex gap-3 text-sm md:text-base text-[rgb(130,140,160)]">
+                            <span className="text-[rgb(255,102,0)] font-bold flex-shrink-0 mt-0.5">▸</span>
+                            <span>{resp}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <ul className="space-y-3 md:space-y-3.5">
+                  {experiences[selected].responsibilities?.map((resp, i) => (
+                    <li key={i} className="flex gap-3 text-sm md:text-base text-[rgb(130,140,160)]">
+                      <span className="text-[rgb(255,102,0)] font-bold flex-shrink-0 mt-0.5">▸</span>
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>

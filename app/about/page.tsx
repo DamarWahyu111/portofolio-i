@@ -28,12 +28,12 @@ export default function AboutPage() {
           {/* Bio Section */}
           <div className="mb-12 md:mb-16 space-y-5">
             <p className="text-base md:text-xl font-space-mono text-[rgb(170,180,196)] leading-relaxed max-w-4xl">
-              Hi! I'm a passionate full-stack developer and UI/UX designer with a journey spanning from high school 
-              to university. My educational background has equipped me with strong fundamentals in science and technology, 
+              Hi! I'm a passionate IT Tech with a journey spanning from high school
+              to university. My educational background has equipped me with strong fundamentals in science and technology,
               and I'm continuously building expertise in modern web development, design thinking, and software engineering.
             </p>
             <p className="text-base md:text-xl font-space-mono text-[rgb(170,180,196)] leading-relaxed max-w-4xl">
-              I believe in learning by doing and creating real-world projects that solve meaningful problems. 
+              I believe in learning by doing and creating real-world projects that solve meaningful problems.
               Every project I build is an opportunity to grow, innovate, and push the boundaries of what's possible.
             </p>
           </div>
@@ -61,11 +61,10 @@ export default function AboutPage() {
                         {edu.institution}
                       </h3>
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wide ${
-                          edu.status === "completed"
+                        className={`px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wide ${edu.status === "completed"
                             ? "bg-[rgb(0,217,255)]/20 text-[rgb(0,217,255)]"
                             : "bg-[rgb(255,102,0)]/20 text-[rgb(255,102,0)] glow-orange"
-                        }`}
+                          }`}
                       >
                         {edu.status === "completed" ? "COMPLETED" : "ONGOING"}
                       </span>

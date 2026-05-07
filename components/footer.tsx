@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <h3 className="text-3xl font-black font-orbitron glow-cyan mb-4">DAMAR</h3>
             <p className="text-sm font-space-mono text-[rgb(130,140,160)]">
-              FRONTEND &amp; BACKEND DEVELOPER | UI/UX DESIGNER | ALWAYS LEARNING &amp; BUILDING
+              ALWAYS LEARNING &amp; BUILDING
             </p>
           </div>
 
