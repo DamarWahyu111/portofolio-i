@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[rgb(15,23,52)]/95 border-b-2 border-[rgb(0,217,255)]/50" : "bg-transparent"
+        scrolled ? "glass-nav" : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
@@ -66,7 +66,7 @@ export default function Header() {
             />
             <div className="absolute inset-0 rounded-lg bg-[rgb(0,217,255)]/0 group-hover:bg-[rgb(0,217,255)]/10 transition-all duration-300"></div>
           </div>
-          <span className="text-xl md:text-2xl font-black font-orbitron glow-cyan hover:glow-orange transition-all duration-300 hidden sm:inline">
+          <span className="text-xl md:text-2xl font-black font-orbitron text-[rgb(0,217,255)] hover:text-[rgb(255,102,0)] transition-all duration-300 hidden sm:inline drop-shadow-md">
             DAMAR
           </span>
         </Link>
@@ -78,7 +78,7 @@ export default function Header() {
               key={item.label}
               href={item.href}
               onClick={item.onClick}
-              className="text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] hover:glow-cyan transition-all duration-300 relative group"
+              className="text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm"
             >
               {item.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] group-hover:w-full transition-all duration-300"></span>
@@ -100,7 +100,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[rgb(15,23,52)] border-t border-[rgb(0,217,255)]/30 p-4">
+        <div className="md:hidden glass-nav p-4">
           {navItems.map((item) => (
             <Link
               key={item.label}

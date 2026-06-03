@@ -57,14 +57,14 @@ export default function Skills() {
   return (
     <section id="skills" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-cyan">Skills &amp; Expertise</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">Skills &amp; Expertise</h2>
         <p className="text-[rgb(130,140,160)] mb-16 max-w-2xl">
           Keterampilan yang telah saya kuasai melalui pembelajaran dan pengalaman praktis.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((cat, i) => (
-            <div key={i} className="border-glow p-6 rounded hover:shadow-2xl transition-all duration-300 group">
+            <div key={i} className="glass-panel p-6 rounded-[2rem] hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
               <div className="text-4xl mb-4">{cat.icon}</div>
               <h3 className="text-xl font-bold mb-4 text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors">
                 {cat.category}

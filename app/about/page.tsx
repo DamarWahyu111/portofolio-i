@@ -20,7 +20,7 @@ export default function AboutPage() {
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Title Section */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan text-center md:text-left">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center md:text-left">
             ABOUT ME
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mb-10 md:mb-12 mx-auto md:mx-0"></div>
@@ -63,7 +63,7 @@ export default function AboutPage() {
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wide ${edu.status === "completed"
                             ? "bg-[rgb(0,217,255)]/20 text-[rgb(0,217,255)]"
-                            : "bg-[rgb(255,102,0)]/20 text-[rgb(255,102,0)] glow-orange"
+                            : "glass-button glass-button-orange text-white"
                           }`}
                       >
                         {edu.status === "completed" ? "COMPLETED" : "ONGOING"}
@@ -169,7 +169,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-block px-8 py-4 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] font-bold font-orbitron uppercase tracking-widest hover:bg-[rgb(0,217,255)] hover:text-[rgb(10,14,39)] transition-all duration-300 rounded-lg glow-cyan hover:glow-orange"
+              className="glass-button glass-button-cyan px-8 py-4 inline-block"
             >
               Get In Touch
             </Link>

@@ -83,7 +83,7 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
   return (
     <section id="experience" className="py-16 md:py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 glow-cyan">Professional Experience</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 drop-shadow-md">Professional Experience</h2>
         <p className="text-sm md:text-base text-[rgb(130,140,160)] mb-10 md:mb-16 max-w-2xl">
           Perjalanan karir saya mencakup event management, dan full-stack development dengan berbagai teknologi.
         </p>
@@ -96,9 +96,9 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
                 <button
                   key={i}
                   onClick={() => handleSelect(i)}
-                  className={`text-left p-4 rounded border transition-all duration-300 ${selected === i
-                    ? "border-[rgb(0,217,255)] bg-[rgb(0,217,255)]/10 text-[rgb(0,217,255)]"
-                    : "border-[rgb(0,217,255)]/30 text-[rgb(130,140,160)] hover:border-[rgb(0,217,255)]/60"
+                  className={`text-left p-4 rounded-xl transition-all duration-300 ${selected === i
+                    ? "glass-panel border-[rgba(0,217,255,0.5)] text-[rgb(0,217,255)] shadow-[0_0_15px_rgba(0,217,255,0.2)]"
+                    : "glass-panel opacity-60 hover:opacity-100 text-[rgb(130,140,160)]"
                     }`}
                 >
                   <div className="font-bold text-sm md:text-base uppercase tracking-widest mb-2">{exp.title}</div>
@@ -111,11 +111,11 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
           {/* Experience Detail */}
           <div className={showList ? "md:col-span-2" : "md:col-span-1"}>
             <div className={`transition-all duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-              <div className="mb-5 md:mb-6 w-full aspect-[4/3] md:aspect-video rounded overflow-hidden border-glow">
+              <div className="mb-5 md:mb-6 w-full aspect-[4/3] md:aspect-video rounded-xl overflow-hidden glass-panel p-2">
                 <img
                   src={experiences[selected].image || "/placeholder.svg"}
                   alt={experiences[selected].title}
-                  className="w-full h-full object-contain bg-[rgb(15,23,52)]"
+                  className="w-full h-full object-contain rounded-lg bg-transparent"
                 />
               </div>
 

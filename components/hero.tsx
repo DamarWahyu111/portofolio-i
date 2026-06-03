@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="slide-down">
           <h1 className="text-5xl md:text-7xl font-black font-orbitron mb-6 leading-tight">
             <span className="block">HI, I&apos;M</span>
-            <span className="glow-cyan block">
+            <span className="block drop-shadow-lg text-[rgb(0,217,255)]">
               {displayText}
               <span className="animate-pulse">|</span>
             </span>
@@ -43,13 +43,13 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="#projects"
-              className="px-8 py-3 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 hover:shadow-lg transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-cyan hover:glow-cyan-strong"
+              className="glass-button glass-button-cyan px-8 py-3 text-sm flex items-center justify-center"
             >
               View My Work
             </Link>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="px-8 py-3 border-2 border-[rgb(255,102,0)] text-[rgb(255,102,0)] hover:bg-[rgb(255,102,0)]/10 hover:shadow-lg transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-orange hover:text-white"
+              className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
             >
               Download CV
             </button>
@@ -58,7 +58,7 @@ export default function Hero() {
 
         {/* Image */}
         <div className="flex justify-center">
-          <div className="float border-glow p-4 rounded-lg">
+          <div className="float glass-panel p-4 rounded-[2rem]">
             <img
               src="/img/profile-damar.png"
               alt="Damar Wahyu Putra"
@@ -71,7 +71,7 @@ export default function Hero() {
       {/* CV Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-          <div className="bg-[rgb(15,23,52)] border border-[rgb(0,217,255)]/30 rounded-lg p-6 max-w-sm w-full shadow-[0_0_15px_rgba(0,217,255,0.2)]">
+          <div className="glass-panel p-6 max-w-sm w-full">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold font-orbitron text-[rgb(0,217,255)]">Pilih CV</h3>
               <button
@@ -87,7 +87,7 @@ export default function Hero() {
                 download="CV_Damar-Wahyu-Putra.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 text-center transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-cyan"
+                className="glass-button glass-button-cyan px-6 py-3 text-sm text-center block"
                 onClick={() => setIsModalOpen(false)}
               >
                 Download CV Umum
@@ -97,7 +97,7 @@ export default function Hero() {
                 download="CV DAMAR WAHYU PUTRA_IT.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border-2 border-[rgb(255,102,0)] text-[rgb(255,102,0)] hover:bg-[rgb(255,102,0)]/10 text-center transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-orange hover:text-white"
+                className="glass-button glass-button-orange px-6 py-3 text-sm text-center block"
                 onClick={() => setIsModalOpen(false)}
               >
                 Download CV Khusus IT

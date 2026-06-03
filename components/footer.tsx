@@ -4,13 +4,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[rgb(0,217,255)]/30 py-12 px-4 bg-[rgb(10,14,39)]">
+    <footer className="glass-nav border-t-2 border-white/10 py-12 px-4 mt-12">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer */}
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-3xl font-black font-orbitron glow-cyan mb-4">DAMAR</h3>
+            <h3 className="text-3xl font-black font-orbitron mb-4 text-[rgb(0,217,255)] drop-shadow-md">DAMAR</h3>
             <p className="text-sm font-space-mono text-[rgb(130,140,160)]">
               ALWAYS LEARNING &amp; BUILDING
             </p>
@@ -68,7 +68,7 @@ export default function Footer() {
             </p>
             <a
               href="mailto:damarwahyup160@gmail.com"
-              className="inline-block px-4 py-2 border border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 transition-all text-xs font-black font-orbitron uppercase tracking-widest rounded"
+              className="glass-button glass-button-cyan px-6 py-2 inline-block text-xs text-center"
             >
               Send Email
             </a>

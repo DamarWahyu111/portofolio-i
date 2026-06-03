@@ -64,7 +64,7 @@ export default function OrganizationsPage() {
       <Header />
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center">
             ORGANIZATIONS &amp; ACHIEVEMENTS
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mx-auto mb-12"></div>
@@ -76,7 +76,7 @@ export default function OrganizationsPage() {
           <div className="text-center mb-12">
             <Link
               href="/achievements"
-              className="inline-block px-8 py-4 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 hover:border-[rgb(255,102,0)] hover:text-[rgb(255,102,0)] transition-all duration-300 uppercase text-sm md:text-base font-black font-orbitron tracking-widest rounded glow-cyan hover:glow-orange"
+              className="glass-button glass-button-cyan px-8 py-4 uppercase text-sm md:text-base inline-block"
             >
               Klik My Achievements or Certificates
             </Link>

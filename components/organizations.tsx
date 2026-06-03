@@ -56,14 +56,14 @@ export default function Organizations() {
   return (
     <section id="organizations" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-cyan">Organizations &amp; Activities</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">Organizations &amp; Activities</h2>
         <p className="text-[rgb(130,140,160)] mb-16 max-w-2xl">
           Keterlibatan saya dalam berbagai organisasi dan aktivitas yang membentuk pengalaman profesional.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {organizations.map((org, i) => (
-            <div key={i} className="border-glow p-6 rounded hover:shadow-2xl transition-all duration-300 group">
+            <div key={i} className="glass-panel p-6 rounded-[2rem] hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2">
               <div className="text-5xl mb-4">{org.icon}</div>
               <h3 className="text-2xl font-bold mb-2 text-[rgb(0,217,255)]">{org.name}</h3>
               <p className="text-[rgb(255,102,0)] text-sm font-semibold uppercase tracking-widest mb-1">{org.role}</p>

@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 pt-20">
       <div className="text-center">
-        <h1 className="text-6xl font-bold glow-cyan mb-4">404</h1>
+        <h1 className="text-6xl font-bold drop-shadow-md mb-4 text-[rgb(0,217,255)]">404</h1>
         <p className="text-2xl text-[rgb(130,140,160)] mb-8">Project tidak ditemukan</p>
         <p className="text-[rgb(130,140,160)] mb-8 max-w-md">
           Maaf, project yang Anda cari tidak ada. Kembali ke halaman utama untuk melihat semua project.

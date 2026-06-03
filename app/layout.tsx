@@ -38,14 +38,7 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
-        <div className="glitch-bg"></div>
-
-        <div className="fixed inset-0 pointer-events-none z-0">
-          {/* Grid background */}
-          <div className="absolute inset-0 bg-grid-animation opacity-20"></div>
-          {/* Animated particles */}
-          <div className="absolute inset-0 particle-container"></div>
-        </div>
+        <div className="glass-bg pointer-events-none"></div>
 
         {/* Content wrapper */}
         <div className="relative z-10">{children}</div>

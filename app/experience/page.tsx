@@ -8,11 +8,11 @@ import { experiencesData } from "@/lib/experienceData"
 
 export default function ExperiencePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-transparent">
       <Header />
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md">
             PROFESSIONAL EXPERIENCE
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mb-12"></div>
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
               <Link
                 key={exp.id}
                 href={`/experience/${exp.slug}`}
-                className="border-2 border-[rgb(0,217,255)] p-6 md:p-8 rounded-lg hover:border-[rgb(255,102,0)] transition-all duration-300 group hover:shadow-lg hover:shadow-[rgb(0,217,255)]/20 slide-in-skill block"
+                className="glass-panel p-6 md:p-8 rounded-[2rem] hover:border-[rgb(255,102,0)] transition-all duration-300 group hover:shadow-lg hover:shadow-[rgb(0,217,255)]/20 slide-in-skill block"
                 style={{
                   animationDelay: `${i * 0.1}s`,
                 }}

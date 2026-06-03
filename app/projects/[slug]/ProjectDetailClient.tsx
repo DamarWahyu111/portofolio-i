@@ -19,7 +19,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
   }
 
   return (
-    <main className="min-h-screen bg-[rgb(10,14,39)]">
+    <main className="min-h-screen bg-transparent">
       <Header />
 
       <div className="pt-20 md:pt-32 px-4">
@@ -35,7 +35,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       <section className="px-4 py-8 md:py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="border-glow rounded-lg overflow-hidden">
+          <div className="glass-panel rounded-[2rem] overflow-hidden p-2">
             <Image 
               src={project.hero || "/placeholder.svg"} 
               alt={project.title} 
@@ -50,7 +50,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       <section className="py-8 md:py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan">{project.title}</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md">{project.title}</h1>
 
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 flex-wrap">
             <span className="text-xs uppercase tracking-widest text-[rgb(0,217,255)] font-orbitron font-black">
@@ -70,7 +70,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
               <button
                 key={i}
                 onClick={() => alert(`${tech} - Teknologi yang digunakan`)}
-                className="px-3 md:px-4 py-2 border border-[rgb(0,217,255)]/50 hover:border-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 text-[rgb(0,217,255)] hover:text-[rgb(255,102,0)] text-xs md:text-sm font-orbitron font-black rounded transition-all duration-300 cursor-pointer hover:scale-105"
+                className="glass-button glass-button-cyan px-4 py-2 text-xs md:text-sm cursor-pointer"
               >
                 {tech}
               </button>
@@ -114,12 +114,12 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       <section className="py-8 md:py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold font-orbitron mb-8 glow-cyan">PROJECT GALLERY</h2>
+          <h2 className="text-2xl md:text-3xl font-bold font-orbitron mb-8 drop-shadow-md">PROJECT GALLERY</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {project.gallery.map((image, i) => (
               <div
                 key={i}
-                className="border-glow rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                className="glass-panel p-2 overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
                 <Image
@@ -144,7 +144,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
           </p>
           <Link
             href="/#contact"
-            className="inline-block px-6 md:px-8 py-3 md:py-4 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 transition-all duration-300 uppercase text-xs md:text-sm font-black font-orbitron tracking-widest rounded"
+            className="glass-button glass-button-cyan px-8 py-4 inline-block text-center"
           >
             Get in Touch
           </Link>
@@ -156,11 +156,11 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
       {/* Image Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[rgb(10,14,39)]/95 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
           onClick={() => setSelectedImage(null)}
         >
           <div
-            className="relative max-w-5xl w-full max-h-[90vh] overflow-hidden border-2 border-[rgb(0,217,255)] rounded-lg"
+            className="relative max-w-5xl w-full max-h-[90vh] overflow-hidden glass-panel"
             onClick={(e) => e.stopPropagation()}
           >
             <button

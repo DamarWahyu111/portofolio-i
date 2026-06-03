@@ -31,10 +31,10 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 border-t border-[rgb(0,217,255)]/30">
+    <section id="contact" className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-4 glow-cyan">LET&apos;S WORK TOGETHER</h2>
+          <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-4 drop-shadow-md">LET&apos;S WORK TOGETHER</h2>
           <p className="text-lg font-space-mono text-[rgb(130,140,160)] max-w-2xl mx-auto">
             Saya terbuka untuk kesempatan magang, kolaborasi, atau sekadar diskusi tentang teknologi web. Hubungi saya
             dan mari kita ciptakan sesuatu yang luar biasa!
@@ -82,7 +82,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="glass-panel p-8 space-y-6">
             <div>
               <label className="block text-sm font-black font-orbitron text-[rgb(0,217,255)] mb-2 uppercase tracking-wider">
                 Nama
@@ -93,7 +93,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-[rgb(15,23,52)] border-2 border-[rgb(0,217,255)]/30 text-white font-space-mono placeholder-[rgb(130,140,160)] focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white font-space-mono placeholder-white/50 focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded-xl backdrop-blur-sm"
                 placeholder="Nama Anda"
               />
             </div>
@@ -108,7 +108,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-[rgb(15,23,52)] border-2 border-[rgb(0,217,255)]/30 text-white font-space-mono placeholder-[rgb(130,140,160)] focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white font-space-mono placeholder-white/50 focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded-xl backdrop-blur-sm"
                 placeholder="email@example.com"
               />
             </div>
@@ -123,7 +123,7 @@ export default function Contact() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-[rgb(15,23,52)] border-2 border-[rgb(0,217,255)]/30 text-white font-space-mono placeholder-[rgb(130,140,160)] focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white font-space-mono placeholder-white/50 focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded-xl backdrop-blur-sm"
                 placeholder="Subjek pesan"
               />
             </div>
@@ -138,14 +138,14 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-[rgb(15,23,52)] border-2 border-[rgb(0,217,255)]/30 text-white font-space-mono placeholder-[rgb(130,140,160)] focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 text-white font-space-mono placeholder-white/50 focus:border-[rgb(0,217,255)] focus:outline-none transition-colors rounded-xl backdrop-blur-sm resize-none"
                 placeholder="Tulis pesan Anda di sini..."
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full px-6 py-3 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-cyan hover:glow-cyan-strong"
+              className="glass-button glass-button-cyan w-full px-6 py-4 text-sm"
             >
               {submitted ? "TERIMA KASIH! PESAN TERKIRIM" : "KIRIM PESAN"}
             </button>

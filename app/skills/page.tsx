@@ -107,7 +107,7 @@ export default function SkillsPage() {
       <Header />
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center">
             SKILLS &amp; EXPERTISE
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mx-auto mb-12"></div>
@@ -139,7 +139,7 @@ export default function SkillsPage() {
                     {cat.skills.map((skill, skillIndex) => (
                       <div
                         key={skillIndex}
-                        className="flex-shrink-0 border-glow p-4 md:p-6 rounded-lg hover:shadow-lg transition-all duration-300 group min-w-[180px] md:min-w-[220px]"
+                        className="flex-shrink-0 glass-panel p-4 md:p-6 rounded-[2rem] hover:shadow-lg transition-all duration-300 group min-w-[180px] md:min-w-[220px]"
                       >
                         <div className="flex items-center gap-3 md:gap-4">
                           <span className="text-3xl md:text-4xl flex-shrink-0" title={skill}>

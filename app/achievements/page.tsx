@@ -128,7 +128,7 @@ export default function AchievementsPage() {
           </Link>
 
           {/* Header */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 glow-cyan text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center">
             ACHIEVEMENTS &amp; CERTIFICATES
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mx-auto mb-12"></div>

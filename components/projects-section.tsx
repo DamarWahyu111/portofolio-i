@@ -10,9 +10,9 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="min-h-screen py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-4 glow-cyan">FEATURED PROJECTS</h2>
+        <h2 className="text-5xl md:text-6xl font-black font-orbitron mb-4 drop-shadow-md">FEATURED PROJECTS</h2>
         <p className="text-lg font-space-mono text-[rgb(130,140,160)] mb-16 max-w-2xl">
-          Koleksi proyek yang menunjukkan kemampuan saya dalam frontend, backend, dan UI/UX design.
+          Koleksi proyek yang menunjukkan kemampuan saya dalam frontend, backend.
         </p>
 
         {/* Projects Grid */}
@@ -21,30 +21,32 @@ export default function ProjectsSection() {
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}
-              className="group relative overflow-hidden rounded border-glow transition-all duration-300 hover:shadow-2xl"
+              className="glass-panel group relative overflow-hidden transition-all duration-300 flex flex-col h-full"
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden shrink-0">
                 <img
                   src={project.hero || "/placeholder.svg"}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgb(10,14,39)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,23,52,0.8)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="p-6 bg-[rgb(15,23,52)]">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs uppercase tracking-widest font-black font-orbitron text-[rgb(0,217,255)]">
-                    {project.category}
-                  </span>
-                  <span className="text-xs font-space-mono text-[rgb(130,140,160)]">{project.year}</span>
+              <div className="p-6 flex-grow flex flex-col relative z-10">
+                <div className="flex-grow">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs uppercase tracking-widest font-black font-orbitron text-[rgb(0,217,255)]">
+                      {project.category}
+                    </span>
+                    <span className="text-xs font-space-mono text-[rgb(130,140,160)]">{project.year}</span>
+                  </div>
+                  <h3 className="text-xl font-black font-orbitron mb-2 group-hover:text-[rgb(0,217,255)] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm font-space-mono text-[rgb(130,140,160)] line-clamp-2">{project.description}</p>
                 </div>
-                <h3 className="text-xl font-black font-orbitron mb-2 group-hover:text-[rgb(0,217,255)] transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm font-space-mono text-[rgb(130,140,160)] line-clamp-2">{project.description}</p>
 
                 {/* View Details Link */}
                 <div className="mt-4 flex items-center text-[rgb(0,217,255)] gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

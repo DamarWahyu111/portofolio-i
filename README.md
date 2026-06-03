@@ -4,7 +4,7 @@ Portofolio website futuristik dengan tema sci-fi yang dibangun menggunakan **Nex
 
 ## 🚀 Fitur Utama
 
-- **Tema Sci-Fi Futuristik** - Desain modern dengan cyan glow effects dan orange accents
+- **Tema Liquid Glass (Glassmorphism)** - Desain premium dengan efek kaca transparan dan fluid background
 - **Dynamic Routing** - Halaman detail project yang dapat diakses via `/projects/[slug]`
 - **Responsive Design** - Fully responsive di mobile, tablet, dan desktop
 - **Smooth Animations** - Typewriter effect, fade-in, dan hover interactions
@@ -49,7 +49,7 @@ portfolio-damar/
 
 - **Background Utama**: `rgb(10, 14, 39)` - Deep dark blue/space color
 - **Background Secondary**: `rgb(15, 23, 52)` - Slightly lighter for cards
-- **Cyan Accent**: `rgb(0, 217, 255)` - Primary glow color
+- **Cyan Accent**: `rgb(0, 217, 255)` - Primary accent color
 - **Orange Accent**: `rgb(255, 102, 0)` - Secondary accent color
 - **Text Primary**: `rgb(255, 255, 255)` - White
 - **Text Secondary**: `rgb(170, 180, 196)` - Muted white
