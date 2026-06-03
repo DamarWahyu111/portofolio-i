@@ -35,14 +35,14 @@ const experiences = [
   },
   {
     title: "Otoritas Jasa Keuangan Internship",
-    date: "Feb 2026 - Present",
+    date: "Feb 2026 - Mei 2026",
     image: "/img/damOJK.jpg",
     description:
       "Magang di bagian Departmen Organisasi, SDM & Budaya.",
     divisions: [
       {
         name: "Human Resources and Culture Organization - DOPS",
-        period: "Apr 2026 - Present (2 mos)",
+        period: "Apr 2026 - Mei 2026",
         responsibilities: [
           "Otomatiskan proses pengelolaan dokumen dengan mengintegrasikan data Excel ke dalam Word melalui sistem Mail Merge untuk meningkatkan efisiensi kerja.",
           "Kembangkan dasbor Excel interaktif untuk memantau dan memvisualisasikan data organisasi untuk periode Januari–Juni 2026.",
@@ -51,7 +51,7 @@ const experiences = [
       },
       {
         name: "Human Resources and Culture Organization - LMSt (Layanan Managemstis-1)",
-        period: "Feb 2026 - Mar 2026 (2 mos)",
+        period: "Feb 2026 - Mar 2026",
         responsibilities: [
           "Mengelola digitalisasi dan input data dari lebih dari 500+ dokumen arsip strategis ke dalam database Excel.",
           "Memastikan tingkat akurasi yang tinggi untuk menjamin ketersediaan data dalam proyeksi organisasi di masa depan.",
@@ -96,11 +96,10 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
                 <button
                   key={i}
                   onClick={() => handleSelect(i)}
-                  className={`text-left p-4 rounded border transition-all duration-300 ${
-                    selected === i
-                      ? "border-[rgb(0,217,255)] bg-[rgb(0,217,255)]/10 text-[rgb(0,217,255)]"
-                      : "border-[rgb(0,217,255)]/30 text-[rgb(130,140,160)] hover:border-[rgb(0,217,255)]/60"
-                  }`}
+                  className={`text-left p-4 rounded border transition-all duration-300 ${selected === i
+                    ? "border-[rgb(0,217,255)] bg-[rgb(0,217,255)]/10 text-[rgb(0,217,255)]"
+                    : "border-[rgb(0,217,255)]/30 text-[rgb(130,140,160)] hover:border-[rgb(0,217,255)]/60"
+                    }`}
                 >
                   <div className="font-bold text-sm md:text-base uppercase tracking-widest mb-2">{exp.title}</div>
                   <div className="text-xs text-[rgb(100,110,140)]">{exp.date}</div>

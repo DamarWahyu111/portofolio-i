@@ -5,6 +5,7 @@ import Link from "next/link"
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const fullText = "DAMAR WAHYU PUTRA"
 
   useEffect(() => {
@@ -33,8 +34,8 @@ export default function Hero() {
             FRONTEND DEVELOPER &amp; BACKEND DEVELOPER
           </p>
           <p className="text-base font-space-mono leading-relaxed text-[rgb(130,140,160)] mb-8 max-w-xl">
-            As a graduate of CEP-CCIT FTUI with an interest in front-end and back-end development, 
-            I enjoy turning ideas into tangible products. I focus on performance and accessibility, 
+            As a graduate of CEP-CCIT FTUI with an interest in front-end and back-end development,
+            I enjoy turning ideas into tangible products. I focus on performance and accessibility,
             combined with clean design so that every interaction feels intuitive.
           </p>
 
@@ -46,15 +47,12 @@ export default function Hero() {
             >
               View My Work
             </Link>
-            <a
-              href="/CV_Damar-Wahyu-Putra.pdf"
-              download="CV_Damar-Wahyu-Putra.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="px-8 py-3 border-2 border-[rgb(255,102,0)] text-[rgb(255,102,0)] hover:bg-[rgb(255,102,0)]/10 hover:shadow-lg transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-orange hover:text-white"
             >
               Download CV
-            </a>
+            </button>
           </div>
         </div>
 
@@ -69,6 +67,45 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* CV Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+          <div className="bg-[rgb(15,23,52)] border border-[rgb(0,217,255)]/30 rounded-lg p-6 max-w-sm w-full shadow-[0_0_15px_rgba(0,217,255,0.2)]">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold font-orbitron text-[rgb(0,217,255)]">Pilih CV</h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-[rgb(130,140,160)] hover:text-white transition-colors text-2xl leading-none"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="flex flex-col gap-4">
+              <a
+                href="/CV_Damar-Wahyu-Putra.pdf"
+                download="CV_Damar-Wahyu-Putra.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border-2 border-[rgb(0,217,255)] text-[rgb(0,217,255)] hover:bg-[rgb(0,217,255)]/10 text-center transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-cyan"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Download CV Umum
+              </a>
+              <a
+                href="/CV DAMAR WAHYU PUTRA_IT.pdf"
+                download="CV DAMAR WAHYU PUTRA_IT.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border-2 border-[rgb(255,102,0)] text-[rgb(255,102,0)] hover:bg-[rgb(255,102,0)]/10 text-center transition-all duration-300 uppercase text-sm font-black font-orbitron tracking-widest rounded glow-orange hover:text-white"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Download CV Khusus IT
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

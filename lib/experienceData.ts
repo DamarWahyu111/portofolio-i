@@ -44,8 +44,8 @@ export const experiencesData = [
     slug: "otoritas-jasa-keuangan-internship",
     title: "Otoritas Jasa Keuangan Internship",
     company: "Otoritas Jasa Keuangan",
-    period: "Februari 2026 - April 2026",
-    date: "Februari 2026 - April 2026",
+    period: "Februari 2026 - Mei 2026",
+    date: "Februari 2026 - Mei 2026",
     image: "/img/damOJK.jpg",
     description:
       "Magang di bagian Departmen Organisasi, SDM & Budaya.",
