@@ -23,7 +23,7 @@ export default function AboutPage() {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center md:text-left">
             ABOUT ME
           </h1>
-          <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mb-10 md:mb-12 mx-auto md:mx-0"></div>
+          <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(95,232,255)] mb-10 md:mb-12 mx-auto md:mx-0"></div>
 
           {/* Bio Section */}
           <div className="mb-12 md:mb-16 space-y-5">
@@ -96,7 +96,7 @@ export default function AboutPage() {
                     </div>
                     <div className="h-2 bg-[rgb(20,30,60)] rounded-full overflow-hidden border border-[rgb(0,217,255)]/30">
                       <div
-                        className="h-full bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(95,232,255)] transition-all duration-500"
                         style={{
                           width: `${calculateProgress(edu.startYear, edu.endYear)}%`,
                         }}

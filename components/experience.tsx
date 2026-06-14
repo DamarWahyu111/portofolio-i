@@ -66,6 +66,44 @@ interface ExperienceProps {
   showList?: boolean
 }
 
+interface AdaptiveExperienceImageProps {
+  src: string
+  alt: string
+}
+
+function AdaptiveExperienceImage({ src, alt }: AdaptiveExperienceImageProps) {
+  const [orientation, setOrientation] = useState<"landscape" | "portrait" | "square">("landscape")
+
+  const frameClass =
+    orientation === "portrait"
+      ? "mx-auto w-full max-w-[520px] min-h-[520px] md:min-h-[680px]"
+      : orientation === "square"
+        ? "mx-auto w-full max-w-[680px] aspect-square"
+        : "w-full aspect-[4/3] md:aspect-video"
+
+  return (
+    <div className={`mb-5 md:mb-6 rounded-xl overflow-hidden glass-panel p-2 ${frameClass}`}>
+      <img
+        src={src || "/placeholder.svg"}
+        alt={alt}
+        onLoad={(event) => {
+          const { naturalWidth, naturalHeight } = event.currentTarget
+          const ratio = naturalWidth / naturalHeight
+
+          if (ratio < 0.85) {
+            setOrientation("portrait")
+          } else if (ratio > 1.15) {
+            setOrientation("landscape")
+          } else {
+            setOrientation("square")
+          }
+        }}
+        className="w-full h-full object-contain rounded-lg bg-transparent"
+      />
+    </div>
+  )
+}
+
 export default function Experience({ initialSelected = 0, showList = true }: ExperienceProps = {}) {
   const [selected, setSelected] = useState(initialSelected)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -111,13 +149,10 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
           {/* Experience Detail */}
           <div className={showList ? "md:col-span-2" : "md:col-span-1"}>
             <div className={`transition-all duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-              <div className="mb-5 md:mb-6 w-full aspect-[4/3] md:aspect-video rounded-xl overflow-hidden glass-panel p-2">
-                <img
-                  src={experiences[selected].image || "/placeholder.svg"}
-                  alt={experiences[selected].title}
-                  className="w-full h-full object-contain rounded-lg bg-transparent"
-                />
-              </div>
+              <AdaptiveExperienceImage
+                src={experiences[selected].image}
+                alt={experiences[selected].title}
+              />
 
               <h3 className="text-2xl md:text-3xl font-bold mb-2 text-[rgb(0,217,255)]">{experiences[selected].title}</h3>
               <p className="text-[rgb(255,102,0)] text-xs md:text-sm uppercase tracking-widest mb-3 md:mb-4">

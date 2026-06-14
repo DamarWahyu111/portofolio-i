@@ -16,6 +16,7 @@ export const experiencesData = [
       "Berkoordinasi dengan tim untuk memastikan timeline acara berjalan sesuai rencana",
       "Membantu registrasi dan handling peserta seminar",
     ],
+    gallery: ["/img/IMG_3833.jpg"],
     icon: "📋",
   },
   {
@@ -37,6 +38,10 @@ export const experiencesData = [
       "Menerapkan integrasi frontend dengan formulir, tombol, dan validasi berdasarkan desain Figma",
       "Menerapkan alur create, read, dan update antara Database ⇄ API ⇄ Frontend",
     ],
+    gallery: [
+      "/img/experience_folder/gallery_bpjs/bpjs1.jpeg",
+      "/img/experience_folder/gallery_bpjs/bpjs2.jpeg",
+    ],
     icon: "💼",
   },
   {
@@ -47,10 +52,14 @@ export const experiencesData = [
     period: "Februari 2026 - Mei 2026",
     date: "Februari 2026 - Mei 2026",
     image: "/img/damOJK.jpg",
-    description:
-      "Magang di bagian Departmen Organisasi, SDM & Budaya.",
+    description: "Magang di bagian Departmen Organisasi, SDM & Budaya.",
     responsibilities: [
       "Mengelola digitalisasi dan entri data untuk lebih dari 100+ dokumen arsip strategis ke dalam sistem basis data Excel dengan tingkat akurasi tinggi guna memastikan ketersediaan data bagi keperluan proyeksi organisasi mendatang.",
+    ],
+    gallery: [
+      "/img/experience_folder/gallery_ojk/dam-ojk.jpg",
+      "/img/experience_folder/gallery_ojk/pct8.1.jpeg",
+      "/img/experience_folder/gallery_ojk/pct8.2.jpeg",
     ],
     icon: "💼",
   },

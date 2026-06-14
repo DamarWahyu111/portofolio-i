@@ -253,7 +253,7 @@ export default function Hero() {
         </div>
 
         {/* Image */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-52 md:mt-0">
           <HeroPhotoBadge />
         </div>
       </div>

@@ -110,7 +110,7 @@ export default function SkillsPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center">
             SKILLS &amp; EXPERTISE
           </h1>
-          <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(255,102,0)] mx-auto mb-12"></div>
+          <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(95,232,255)] mx-auto mb-12"></div>
           <p className="text-center font-space-mono text-base md:text-lg text-[rgb(130,140,160)] mb-16 max-w-2xl mx-auto">
             Keterampilan yang telah saya kuasai melalui pembelajaran dan pengalaman praktis.
           </p>
