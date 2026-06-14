@@ -78,10 +78,9 @@ export default function Header() {
               key={item.label}
               href={item.href}
               onClick={item.onClick}
-              className="text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm"
+              className="liquid-nav-link px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm"
             >
-              {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(95,232,255)] group-hover:w-full transition-all duration-300"></span>
+              <span>{item.label}</span>
             </Link>
           ))}
         </div>
@@ -109,9 +108,9 @@ export default function Header() {
                 if (item.onClick) item.onClick(e)
                 setMobileMenuOpen(false)
               }}
-              className="block py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors"
+              className="liquid-nav-link flex w-full justify-start px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors"
             >
-              {item.label}
+              <span>{item.label}</span>
             </Link>
           ))}
         </div>

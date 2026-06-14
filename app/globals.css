@@ -6,6 +6,11 @@
 
 /* Sci-Fi Futuristic Color Scheme */
 :root {
+  --font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", "Courier New", Consolas, monospace;
+  --font-orbitron: "Orbitron", "Arial Black", system-ui, sans-serif;
+  --font-space-mono: "Space Mono", "Courier New", Consolas, monospace;
+
   /* Background Colors */
   --background: rgb(10, 14, 39);
   --background-secondary: rgb(15, 23, 52);
@@ -57,7 +62,7 @@
   body {
     background-color: rgb(10, 14, 39);
     color: rgb(255, 255, 255);
-    font-family: "Geist", system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -69,7 +74,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Orbitron", system-ui, sans-serif;
+    font-family: var(--font-orbitron);
     font-weight: 700;
     letter-spacing: 0.1em;
   }
@@ -166,70 +171,204 @@
 
   /* Liquid Glass Buttons */
   .glass-button {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 1px solid transparent;
     border-radius: 9999px; /* Pill shape */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: none;
+    transition:
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 280ms ease,
+      background 280ms ease,
+      box-shadow 280ms ease,
+      color 220ms ease;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: bold;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+    text-shadow: 0 0 12px currentColor;
   }
 
   .glass-button::before {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+      radial-gradient(120% 95% at 18% 8%, rgba(255, 255, 255, 0.44), transparent 36%),
+      radial-gradient(100% 120% at 92% 22%, rgba(191, 132, 255, 0.18), transparent 42%),
+      radial-gradient(110% 95% at 48% 120%, rgba(12, 16, 34, 0.18), transparent 56%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.09) 46%, rgba(255, 255, 255, 0.17));
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.62),
+      inset 9px 0 18px rgba(255, 255, 255, 0.12),
+      inset -12px 0 24px rgba(180, 145, 255, 0.12),
+      inset 0 -16px 28px rgba(10, 14, 39, 0.18),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.18),
+      0 12px 30px rgba(0, 0, 0, 0.22),
+      0 0 28px rgba(186, 132, 255, 0.16);
     opacity: 0;
-    transition: opacity 0.3s ease;
-    transform: scale(0.5);
+    transform: scale(0.74);
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 260ms ease;
+    pointer-events: none;
+    backdrop-filter: blur(24px) saturate(190%) contrast(1.06) brightness(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(190%) contrast(1.06) brightness(1.08);
+  }
+
+  .glass-button::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 18%;
+    right: 18%;
+    z-index: -1;
+    height: 38%;
+    border-radius: 999px;
+    background:
+      linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent),
+      radial-gradient(90% 110% at 50% 0%, rgba(255, 255, 255, 0.48), transparent 68%);
+    opacity: 0;
+    transform: translateY(5px) scaleX(0.72);
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 240ms ease;
+    pointer-events: none;
   }
 
   .glass-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: translateY(-1px) scale(1.015);
   }
 
   .glass-button:hover::before {
     opacity: 1;
     transform: scale(1);
-    animation: rotateShine 4s linear infinite;
   }
 
-  @keyframes rotateShine {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  .glass-button:hover::after {
+    opacity: 0.72;
+    transform: translateY(0) scaleX(1);
+  }
+
+  .glass-button:active {
+    transform: translateY(0) scale(0.985);
+  }
+
+  .glass-button:active::before {
+    opacity: 1;
+    transform: scale(0.96);
+  }
+
+  .glass-button:active::after {
+    opacity: 0.64;
+    transform: translateY(2px) scaleX(0.9);
   }
 
   .glass-button-cyan {
     color: rgb(0, 217, 255);
-    border-color: rgba(0, 217, 255, 0.3);
+    border-color: transparent;
   }
   
   .glass-button-cyan:hover {
-    background: rgba(0, 217, 255, 0.1);
-    color: white;
+    background: transparent;
+    color: rgb(0, 217, 255);
   }
 
   .glass-button-orange {
     color: rgb(255, 102, 0);
-    border-color: rgba(255, 102, 0, 0.3);
+    border-color: transparent;
   }
 
   .glass-button-orange:hover {
-    background: rgba(255, 102, 0, 0.1);
-    color: white;
+    background: transparent;
+    border-color: transparent;
+    color: rgb(255, 102, 0);
   }
+
+  .liquid-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 999px;
+    min-height: 2.35rem;
+  }
+
+  .liquid-nav-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(120% 95% at 18% 8%, rgba(255, 255, 255, 0.44), transparent 36%),
+      radial-gradient(100% 120% at 92% 22%, rgba(191, 132, 255, 0.18), transparent 42%),
+      radial-gradient(110% 95% at 48% 120%, rgba(12, 16, 34, 0.18), transparent 56%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.09) 46%, rgba(255, 255, 255, 0.17));
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow:
+      inset 0 1px 2px rgba(255, 255, 255, 0.62),
+      inset 9px 0 18px rgba(255, 255, 255, 0.12),
+      inset -12px 0 24px rgba(180, 145, 255, 0.12),
+      inset 0 -16px 28px rgba(10, 14, 39, 0.18),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.18),
+      0 12px 30px rgba(0, 0, 0, 0.22),
+      0 0 28px rgba(186, 132, 255, 0.16);
+    opacity: 0;
+    transform: scale(0.68);
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 240ms ease;
+    backdrop-filter: blur(24px) saturate(190%) contrast(1.06) brightness(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(190%) contrast(1.06) brightness(1.08);
+  }
+
+  .liquid-nav-link::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    right: 20%;
+    z-index: 1;
+    height: 36%;
+    border-radius: 999px;
+    background:
+      linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent),
+      radial-gradient(90% 110% at 50% 0%, rgba(255, 255, 255, 0.48), transparent 68%);
+    opacity: 0;
+    transform: translateY(5px) scaleX(0.72);
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 240ms ease;
+    pointer-events: none;
+  }
+
+  .liquid-nav-link > span {
+    position: relative;
+    z-index: 2;
+  }
+
+  .liquid-nav-link:hover::before,
+  .liquid-nav-link:focus-visible::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .liquid-nav-link:hover::after,
+  .liquid-nav-link:focus-visible::after {
+    opacity: 0.72;
+    transform: translateY(0) scaleX(1);
+  }
+
 
 
 
@@ -272,7 +411,7 @@
   }
 
   .section-title {
-    font-family: "Orbitron", system-ui, sans-serif;
+    font-family: var(--font-orbitron);
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 1rem;
@@ -362,7 +501,7 @@
     justify-content: space-around;
     padding: 8px 0 28px;
     color: rgba(255, 255, 255, 0.8);
-    font-family: "Orbitron", system-ui, sans-serif;
+    font-family: var(--font-orbitron);
     font-size: clamp(0.6rem, 0.85vw, 0.72rem);
     font-weight: 900;
     letter-spacing: 0.08em;

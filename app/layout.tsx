@@ -1,14 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { Space_Mono, Orbitron } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css"
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-const _spaceMono = Space_Mono({ weight: "400", subsets: ["latin"] })
-const _orbitron = Orbitron({ weight: ["400", "700", "900"], subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Damar Wahyu Putra - Full Stack Developer",
@@ -30,14 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${_spaceMono.className} bg-[rgb(10,14,39)] text-white relative overflow-x-hidden`}
-        style={
-          {
-            "--font-orbitron": _orbitron.style.fontFamily,
-          } as React.CSSProperties
-        }
-      >
+      <body className="font-space-mono bg-[rgb(10,14,39)] text-white relative overflow-x-hidden">
         <div className="glass-bg pointer-events-none"></div>
 
         {/* Content wrapper */}
