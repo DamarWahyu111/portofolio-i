@@ -56,7 +56,6 @@ export const projectsData = [
       solutions: [
         "JWT authentication untuk security",
         "WebSocket untuk real-time functionality",
-        "MongoDB aggregation untuk efficient queries",
       ],
     },
   },
