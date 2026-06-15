@@ -1,167 +1,339 @@
 "use client"
 
+import { useState } from "react"
+import {
+  BadgeCheck,
+  Code2,
+  Database,
+  Figma,
+  FileCode2,
+  GitBranch,
+  Globe2,
+  KeyRound,
+  LayoutDashboard,
+  MessageCircle,
+  Mic2,
+  Paintbrush2,
+  PenTool,
+  PlugZap,
+  Puzzle,
+  Rocket,
+  Server,
+  ShieldCheck,
+  Sparkles,
+  Trophy,
+  UsersRound,
+} from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
-import { useEffect, useRef } from "react"
 
-// Icon mapping for skills
-const skillIcons: Record<string, string> = {
-  // Frontend
-  HTML: "🌐",
-  CSS: "🎨",
-  JavaScript: "📜",
-  Figma: "🎭",
-  // Backend
-  "Node.js": "🟢",
-  "Express.js": "🚂",
-  MySQL: "🗄️",
-  MongoDB: "🍃",
-  "REST APIs": "🔌",
-  Authentication: "🔐",
-  // Design & Tools
-  "UI/UX Design": "✨",
-  Wireframing: "📐",
-  Prototyping: "🛠️",
-  "Responsive Design": "📱",
-  Git: "🔀",
-  VMS: "💻",
-  // Soft Skills
-  Communication: "💬",
-  "Problem Solving": "🧩",
-  "Project Management": "📊",
-  "Team Collaboration": "👥",
-  "Public Speaking": "🎤",
+type SkillItem = {
+  name: string
+  description: string
+  level: string
+  icon: LucideIcon
 }
 
-const skillCategories = [
+type SkillCategory = {
+  category: string
+  description: string
+  strength: string
+  icon: LucideIcon
+  skills: SkillItem[]
+  stats: {
+    value: string
+    label: string
+    icon: LucideIcon
+  }[]
+}
+
+const skillCategories: SkillCategory[] = [
   {
     category: "Frontend",
-    icon: "",
-    skills: ["HTML", "CSS", "JavaScript", "Figma"],
+    description: "Building responsive, accessible, and performant user interfaces with modern web technologies.",
+    strength: "Core Strength",
+    icon: Code2,
+    skills: [
+      {
+        name: "JavaScript",
+        description: "Core language for dynamic and interactive web experiences.",
+        level: "Advanced",
+        icon: FileCode2,
+      },
+      {
+        name: "HTML",
+        description: "Semantic, accessible, and SEO-friendly markup.",
+        level: "Advanced",
+        icon: Globe2,
+      },
+      {
+        name: "CSS",
+        description: "Modern styling with responsive layouts and animation.",
+        level: "Advanced",
+        icon: Paintbrush2,
+      },
+      {
+        name: "Figma",
+        description: "UI design, prototyping, and design systems.",
+        level: "Advanced",
+        icon: Figma,
+      },
+    ],
+    stats: [
+      { value: "4+", label: "Frontend Skills", icon: Code2 },
+      { value: "Modern Stack", label: "Up-to-date Tools", icon: Trophy },
+      { value: "Performance", label: "Optimized for Speed", icon: Rocket },
+      { value: "Best Practices", label: "Clean & Maintainable", icon: ShieldCheck },
+    ],
   },
   {
     category: "Backend",
-    icon: "",
-    skills: ["Node.js", "Express.js", "MySQL", "MongoDB", "REST APIs", "Authentication"],
+    description: "Designing APIs, data flow, and server-side logic for reliable internal systems.",
+    strength: "System Logic",
+    icon: Server,
+    skills: [
+      {
+        name: "Node.js",
+        description: "Runtime for scalable JavaScript backend services.",
+        level: "Intermediate",
+        icon: Server,
+      },
+      {
+        name: "Express.js",
+        description: "REST API routing, middleware, and backend structure.",
+        level: "Intermediate",
+        icon: PlugZap,
+      },
+      {
+        name: "MySQL",
+        description: "Relational database modeling and query workflows.",
+        level: "Intermediate",
+        icon: Database,
+      },
+      {
+        name: "MongoDB",
+        description: "Document-based data storage for flexible app data.",
+        level: "Intermediate",
+        icon: Database,
+      },
+      {
+        name: "REST APIs",
+        description: "Clean API contracts between frontend and backend.",
+        level: "Advanced",
+        icon: GitBranch,
+      },
+      {
+        name: "Authentication",
+        description: "User access, protected routes, and secure flows.",
+        level: "Intermediate",
+        icon: KeyRound,
+      },
+    ],
+    stats: [
+      { value: "6+", label: "Backend Skills", icon: Server },
+      { value: "REST APIs", label: "Frontend Integration", icon: PlugZap },
+      { value: "Data Flow", label: "Database to UI", icon: Database },
+      { value: "Auth Ready", label: "Access Control", icon: KeyRound },
+    ],
   },
   {
     category: "Design & Tools",
-    icon: "",
-    skills: ["UI/UX Design", "Wireframing", "Prototyping", "Responsive Design", "Git", "VMS"],
+    description: "Turning product ideas into flows, prototypes, and maintainable implementation assets.",
+    strength: "Product Craft",
+    icon: PenTool,
+    skills: [
+      {
+        name: "UI/UX Design",
+        description: "Interface structure focused on clarity and user flow.",
+        level: "Advanced",
+        icon: LayoutDashboard,
+      },
+      {
+        name: "Wireframing",
+        description: "Fast visual planning before implementation.",
+        level: "Advanced",
+        icon: PenTool,
+      },
+      {
+        name: "Prototyping",
+        description: "Interactive validation for screens and journeys.",
+        level: "Advanced",
+        icon: Sparkles,
+      },
+      {
+        name: "Responsive Design",
+        description: "Layouts that stay clean across device sizes.",
+        level: "Advanced",
+        icon: Globe2,
+      },
+      {
+        name: "Git",
+        description: "Version control for project collaboration.",
+        level: "Intermediate",
+        icon: GitBranch,
+      },
+      {
+        name: "VMS",
+        description: "Working with existing systems and operational tools.",
+        level: "Intermediate",
+        icon: LayoutDashboard,
+      },
+    ],
+    stats: [
+      { value: "6+", label: "Design Tools", icon: PenTool },
+      { value: "Figma Flow", label: "Prototype Ready", icon: Figma },
+      { value: "Git", label: "Version Control", icon: GitBranch },
+      { value: "Responsive", label: "Device Friendly", icon: Globe2 },
+    ],
   },
   {
     category: "Soft Skills",
-    icon: "",
-    skills: ["Communication", "Problem Solving", "Project Management", "Team Collaboration", "Public Speaking"],
+    description: "Collaborating, communicating, and managing work so teams can move with less friction.",
+    strength: "Team Impact",
+    icon: UsersRound,
+    skills: [
+      {
+        name: "Communication",
+        description: "Clear updates, context sharing, and team alignment.",
+        level: "Advanced",
+        icon: MessageCircle,
+      },
+      {
+        name: "Problem Solving",
+        description: "Breaking messy issues into clear next steps.",
+        level: "Advanced",
+        icon: Puzzle,
+      },
+      {
+        name: "Project Management",
+        description: "Keeping timelines, priorities, and execution organized.",
+        level: "Intermediate",
+        icon: BadgeCheck,
+      },
+      {
+        name: "Team Collaboration",
+        description: "Working across roles with practical ownership.",
+        level: "Advanced",
+        icon: UsersRound,
+      },
+      {
+        name: "Public Speaking",
+        description: "Presenting and guiding event or discussion moments.",
+        level: "Intermediate",
+        icon: Mic2,
+      },
+    ],
+    stats: [
+      { value: "5+", label: "Soft Skills", icon: UsersRound },
+      { value: "Events", label: "Public Facing", icon: Mic2 },
+      { value: "Teamwork", label: "Collaborative", icon: MessageCircle },
+      { value: "Ownership", label: "Reliable Delivery", icon: BadgeCheck },
+    ],
   },
 ]
 
 export default function SkillsPage() {
-  const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-
-  useEffect(() => {
-    const animateCarousel = (carousel: HTMLDivElement, speed: number = 1) => {
-      const items = Array.from(carousel.children)
-      items.forEach((item) => {
-        const clone = item.cloneNode(true)
-        carousel.appendChild(clone)
-      })
-
-      let scrollPosition = 0
-      let animationFrameId: number
-
-      const animate = () => {
-        scrollPosition += speed
-        carousel.style.transform = `translateX(-${scrollPosition}px)`
-
-        // Reset position to create infinite loop
-        if (scrollPosition >= carousel.scrollWidth / 2) {
-          scrollPosition = 0
-        }
-
-        animationFrameId = requestAnimationFrame(animate)
-      }
-
-      animationFrameId = requestAnimationFrame(animate)
-      return () => cancelAnimationFrame(animationFrameId)
-    }
-
-    const cleanupFunctions: (() => void)[] = []
-
-    skillCategories.forEach((cat) => {
-      const carousel = carouselRefs.current[cat.category]
-      if (carousel) {
-        const cleanup = animateCarousel(carousel, 0.8)
-        cleanupFunctions.push(cleanup)
-      }
-    })
-
-    return () => {
-      cleanupFunctions.forEach((cleanup) => cleanup())
-    }
-  }, [])
+  const [activeIndex, setActiveIndex] = useState(0)
+  const activeCategory = skillCategories[activeIndex]
+  const ActiveIcon = activeCategory.icon
+  const marqueeSkills = [...activeCategory.skills, ...activeCategory.skills]
 
   return (
-    <main className="min-h-screen">
+    <main className="skills-page min-h-screen overflow-hidden">
       <Header />
-      <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-orbitron mb-4 drop-shadow-md text-center">
-            SKILLS &amp; EXPERTISE
-          </h1>
-          <div className="h-1 w-24 bg-gradient-to-r from-[rgb(0,217,255)] to-[rgb(95,232,255)] mx-auto mb-12"></div>
-          <p className="text-center font-space-mono text-base md:text-lg text-[rgb(130,140,160)] mb-16 max-w-2xl mx-auto">
-            Keterampilan yang telah saya kuasai melalui pembelajaran dan pengalaman praktis.
-          </p>
+      <section className="relative px-4 pb-14 pt-24 md:pb-24 md:pt-36">
+        <div className="skills-page-glow" aria-hidden="true" />
 
-          {/* Skills Carousels - One per category */}
-          <div className="space-y-12 md:space-y-16">
-            {skillCategories.map((cat, catIndex) => (
-              <div key={catIndex} className="space-y-6">
-                {/* Category Header */}
-                <div className="flex items-center gap-4">
-                  <span className="text-3xl md:text-4xl">{cat.icon}</span>
-                  <h2 className="text-2xl md:text-3xl font-black font-orbitron text-[rgb(0,217,255)]">
-                    {cat.category}
-                  </h2>
-                </div>
+        <div className="relative mx-auto max-w-7xl">
+          <div className="skills-heading">
+            <h1>Tech Stack &amp; Skills</h1>
+            <p>A curated set of technologies and skills I use to build modern, scalable, and impactful solutions.</p>
+          </div>
 
-                {/* Skills Carousel for this category */}
-                <div className="relative overflow-hidden py-4">
-                  <div
-                    ref={(el) => {
-                      if (el) carouselRefs.current[cat.category] = el
-                    }}
-                    className="flex gap-4 md:gap-6 will-change-transform"
-                    style={{ width: "fit-content" }}
-                  >
-                    {cat.skills.map((skill, skillIndex) => (
-                      <div
-                        key={skillIndex}
-                        className="flex-shrink-0 glass-panel p-4 md:p-6 rounded-[2rem] hover:shadow-lg transition-all duration-300 group min-w-[180px] md:min-w-[220px]"
-                      >
-                        <div className="flex items-center gap-3 md:gap-4">
-                          <span className="text-3xl md:text-4xl flex-shrink-0" title={skill}>
-                            {skillIcons[skill] || "•"}
-                          </span>
-                          <h4 className="text-sm md:text-base font-black font-orbitron text-[rgb(0,217,255)] group-hover:text-[rgb(255,102,0)] transition-colors">
-                            {skill}
-                          </h4>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+          <div className="skills-tabs" role="tablist" aria-label="Skill categories">
+            {skillCategories.map((category, index) => {
+              const TabIcon = category.icon
+              const isActive = activeIndex === index
+
+              return (
+                <button
+                  key={category.category}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`skills-tab ${isActive ? "is-active" : ""}`}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <TabIcon size={22} strokeWidth={1.9} />
+                  <span>{category.category}</span>
+                </button>
+              )
+            })}
+          </div>
+
+          <section className="skills-showcase" aria-label={`${activeCategory.category} skills`}>
+            <div className="skills-showcase-header">
+              <div className="skills-showcase-title">
+                <span className="skills-category-icon" aria-hidden="true">
+                  <ActiveIcon size={30} strokeWidth={1.9} />
+                </span>
+                <div>
+                  <h2>{activeCategory.category}</h2>
+                  <p>{activeCategory.description}</p>
                 </div>
               </div>
-            ))}
-          </div>
 
-          <div className="text-center mt-8 text-sm font-space-mono text-[rgb(130,140,160)]">
-            ↻ Carousel bergerak otomatis
-          </div>
+              <span className="skills-strength">
+                <span />
+                {activeCategory.strength}
+              </span>
+            </div>
+
+            <div className="skills-marquee" aria-label={`${activeCategory.category} skill list`}>
+              <div key={activeCategory.category} className="skills-marquee-track">
+                {marqueeSkills.map((skill, index) => {
+                  const SkillIcon = skill.icon
+
+                  return (
+                    <article key={`${skill.name}-${index}`} className="skills-marquee-card">
+                      <span className="skills-item-icon" aria-hidden="true">
+                        <SkillIcon size={34} strokeWidth={1.85} />
+                      </span>
+                      <div>
+                        <div className="skills-item-topline">
+                          <h3>{skill.name}</h3>
+                          <span>{skill.level}</span>
+                        </div>
+                        <p>{skill.description}</p>
+                      </div>
+                    </article>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="skills-stats">
+              {activeCategory.stats.map((stat) => {
+                const StatIcon = stat.icon
+
+                return (
+                  <div key={`${activeCategory.category}-${stat.value}`} className="skills-stat">
+                    <span aria-hidden="true">
+                      <StatIcon size={26} strokeWidth={1.8} />
+                    </span>
+                    <div>
+                      <strong>{stat.value}</strong>
+                      <p>{stat.label}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
         </div>
-      </div>
+      </section>
       <Footer />
       <ScrollToTop />
     </main>
