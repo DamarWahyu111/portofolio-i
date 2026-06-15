@@ -332,9 +332,7 @@ export default function OrganizationsPage() {
                   <FileText size={52} strokeWidth={1.5} />
                   <h3>Slot sertifikat belum diisi</h3>
                   <p>
-                    Masukkan path file di <code>certificates.file</code> untuk organisasi ini. Contoh:
-                    <br />
-                    <code>/img/certificates/org/novo-club.pdf</code>
+                    Masukkan path file di <code>certificates.file</code> untuk organisasi ini.
                   </p>
                 </div>
               )}
