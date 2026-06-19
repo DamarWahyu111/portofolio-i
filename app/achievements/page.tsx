@@ -105,6 +105,14 @@ const achievements = [
     category: "General",
     image: "/img/certificates/Damar Wahyu Putra (4) (1).pdf",
   },
+  {
+    id: 13,
+    title: "Data Analysis",
+    issuer: "Certification Body",
+    date: "2026",
+    category: "Data Analysis",
+    image: "/img/certificates/DAMAR WAHYU PUTRA - Sertifikat Excel Batch 8.pdf",
+  },
 ]
 
 export default function AchievementsPage() {
