@@ -5,7 +5,7 @@ const organizations = [
     name: "Indorelawan",
     role: "Ketua Grup Indorelawan",
     subtitle: "Generasi Bebas Plastik",
-    period: "2024 - Sekarang",
+    period: "Jun 2024 - Aug 2024",
     image: "/img/oragnization/indorelawan/WhatsApp Image 2025-07-04 at 14.34.22_76452a2d.jpg",
     description:
       "Memimpin kampanye edukasi lingkungan dan mengorganisasi aksi bersih-bersih di berbagai lokasi. Menginisiasi program awareness tentang pengurangan penggunaan plastik di komunitas.",
@@ -21,7 +21,7 @@ const organizations = [
     name: "Novo Club",
     role: "Member Novo Club",
     subtitle: "Technology Community",
-    period: "2024 - Sekarang",
+    period: "Feb 2024 - Sekarang",
     image: "/img/oragnization/novoclub/WhatsApp Image 2025-07-04 at 14.34.23_1a9c2079.jpg",
     description:
       "Aktif berpartisipasi dalam diskusi teknologi dan pengembangan diri. Membantu mengorganisasi event komunitas digital dan workshop pengembangan skill.",
@@ -49,6 +49,23 @@ const organizations = [
       "Membantu registrasi dan handling peserta seminar",
     ],
     icon: "💻",
+  },
+  {
+    name: "BAZNAS Volunteer",
+    role: "Volunteer Program Lingkungan",
+    subtitle: "Aksi Nyata Jaga Bumi",
+    period: "Mar 2026",
+    image: "/img/volunteer/baznas_volunteer/WhatsApp Image 2026-06-22 at 12.49.07.jpeg",
+    description:
+      "Terlibat dalam program BAZNAS Volunteer Aksi Nyata Jaga Bumi yang berfokus pada edukasi lingkungan, pengelolaan sampah, dan aktivitas sosial bersama anak-anak. Mendukung pelaksanaan kegiatan agar pesan peduli bumi tersampaikan dengan interaktif dan mudah dipahami.",
+    achievements: [
+      "Mendukung edukasi isu sampah dan kepedulian lingkungan kepada peserta",
+      "Membantu aktivitas recycle serta pilah dan kelola sampah",
+      "Mendampingi kegiatan edukatif bersama anak-anak",
+      "Berkoordinasi dengan tim volunteer untuk menjaga alur kegiatan",
+      "Menerima sertifikat apresiasi sebagai BAZNAS Volunteer",
+    ],
+    icon: "🌿",
   },
 ]
 

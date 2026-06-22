@@ -22,12 +22,62 @@ interface ExperienceDetailClientProps {
     description: string
     responsibilities: string[]
     gallery?: string[]
+    certificate?: {
+      title: string
+      issuer: string
+      year: string
+      file: string
+    }
     icon: string
   } | undefined
 }
 
+function ExperienceCertificateCard({
+  certificate,
+  onOpen,
+}: {
+  certificate: NonNullable<NonNullable<ExperienceDetailClientProps["experience"]>["certificate"]>
+  onOpen: () => void
+}) {
+  return (
+    <section className="mb-8 rounded-xl border border-[rgba(0,217,255,0.22)] bg-[rgb(10,14,39)]/55 p-4 shadow-[0_18px_45px_rgba(0,0,0,0.28)] backdrop-blur-md md:p-5">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="mb-1 font-space-mono text-xs uppercase tracking-widest text-[rgb(255,102,0)]">
+            Sertifikat Magang
+          </p>
+          <h4 className="text-lg font-bold text-[rgb(0,217,255)] md:text-xl">{certificate.title}</h4>
+          <p className="mt-1 text-sm text-[rgb(130,140,160)]">
+            {certificate.issuer} - {certificate.year}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <button
+            type="button"
+            onClick={onOpen}
+            className="rounded border border-[rgb(0,217,255)] px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(0,217,255)] transition-colors hover:bg-[rgb(0,217,255)]/10"
+          >
+            Lihat Sertifikat
+          </button>
+          <a
+            href={certificate.file}
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-[rgb(255,102,0)] px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(255,102,0)] transition-colors hover:bg-[rgb(255,102,0)]/10"
+          >
+            Download
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function ExperienceDetailClient({ experience }: ExperienceDetailClientProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedCertificate, setSelectedCertificate] = useState<NonNullable<typeof experience>["certificate"] | null>(null)
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0)
 
   if (!experience) {
@@ -72,7 +122,18 @@ export default function ExperienceDetailClient({ experience }: ExperienceDetailC
           </Link>
 
           {/* Experience Detail using the component from experience.tsx */}
-          <Experience initialSelected={experienceIndex >= 0 ? experienceIndex : 0} showList={false} />
+          <Experience
+            initialSelected={experienceIndex >= 0 ? experienceIndex : 0}
+            showList={false}
+            afterImage={
+              experience.certificate ? (
+                <ExperienceCertificateCard
+                  certificate={experience.certificate}
+                  onOpen={() => setSelectedCertificate(experience.certificate ?? null)}
+                />
+              ) : null
+            }
+          />
 
           <section className="mt-10 md:mt-16">
             <h2 className="text-2xl md:text-3xl font-bold font-orbitron mb-8 drop-shadow-md">
@@ -194,6 +255,67 @@ export default function ExperienceDetailClient({ experience }: ExperienceDetailC
               height={1600}
               className="mx-auto h-auto max-w-full object-contain"
             />
+          </div>
+        </div>
+      )}
+
+      {selectedCertificate && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[rgb(10,14,39)]/95 p-4 backdrop-blur-md"
+          onClick={() => setSelectedCertificate(null)}
+        >
+          <div
+            className="relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-xl border-2 border-[rgb(0,217,255)] bg-[rgb(15,23,52)] p-4 shadow-2xl md:p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedCertificate(null)}
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(10,14,39)]/80 text-3xl font-black text-[rgb(255,102,0)] transition-colors hover:text-[rgb(0,217,255)]"
+              aria-label="Close certificate preview"
+            >
+              ×
+            </button>
+
+            <div className="mb-4 pr-12">
+              <p className="mb-1 font-space-mono text-xs uppercase tracking-widest text-[rgb(255,102,0)]">
+                Sertifikat Magang
+              </p>
+              <h2 className="text-xl font-black font-orbitron text-[rgb(0,217,255)] md:text-3xl">
+                {selectedCertificate.title}
+              </h2>
+              <p className="mt-2 text-sm text-[rgb(130,140,160)]">
+                {selectedCertificate.issuer} - {selectedCertificate.year}
+              </p>
+            </div>
+
+            <div className="h-[65vh] overflow-hidden rounded-lg border border-[rgb(0,217,255)]/30 bg-[rgb(10,14,39)]">
+              <iframe
+                src={`${selectedCertificate.file}#toolbar=0`}
+                title={selectedCertificate.title}
+                className="h-full w-full"
+              />
+            </div>
+
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={selectedCertificate.file}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded border-2 border-[rgb(255,102,0)] px-5 py-3 text-center font-orbitron text-sm font-black uppercase tracking-widest text-[rgb(255,102,0)] transition-colors hover:bg-[rgb(255,102,0)]/10"
+              >
+                Download PDF
+              </a>
+              <a
+                href={selectedCertificate.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded border-2 border-[rgb(0,217,255)] px-5 py-3 text-center font-orbitron text-sm font-black uppercase tracking-widest text-[rgb(0,217,255)] transition-colors hover:bg-[rgb(0,217,255)]/10"
+              >
+                Open in New Tab
+              </a>
+            </div>
           </div>
         </div>
       )}

@@ -1,5 +1,6 @@
 import ExperienceDetailClient from "./ExperienceDetailClient"
 import { experiencesData } from "@/lib/experienceData"
+import { resolveExperienceCertificate } from "@/lib/experienceCertificateResolver"
 
 export const dynamicParams = false
 
@@ -17,5 +18,5 @@ export default async function ExperienceDetailPage({
   const { slug } = await params
   const experience = experiencesData.find((e) => e.slug === slug)
 
-  return <ExperienceDetailClient experience={experience} />
+  return <ExperienceDetailClient experience={resolveExperienceCertificate(experience)} />
 }

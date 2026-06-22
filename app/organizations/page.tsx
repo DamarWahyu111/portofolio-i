@@ -30,6 +30,12 @@ const organizations = [
     image: "/img/oragnization/indorelawan/WhatsApp Image 2025-07-04 at 14.34.22_76452a2d.jpg",
     description:
       "Memimpin kampanye edukasi lingkungan dan mengorganisasi aksi bersih-bersih di berbagai lokasi. Menginisiasi program awareness tentang pengurangan penggunaan plastik di komunitas.",
+    achievements: [
+      "Memimpin tim dalam kampanye edukasi lingkungan",
+      "Mengorganisasi aksi bersih-bersih di berbagai lokasi",
+      "Menginisiasi program awareness pengurangan plastik",
+      "Membangun komunitas peduli lingkungan",
+    ],
     icon: Leaf,
     certificates: [
       {
@@ -49,6 +55,12 @@ const organizations = [
     image: "/img/oragnization/novoclub/WhatsApp Image 2025-07-04 at 14.34.23_1a9c2079.jpg",
     description:
       "Aktif berpartisipasi dalam diskusi teknologi dan pengembangan diri. Membantu mengorganisasi event komunitas digital dan workshop pengembangan skill.",
+    achievements: [
+      "Berpartisipasi aktif dalam diskusi teknologi",
+      "Membantu mengorganisasi event komunitas digital",
+      "Mengikuti workshop pengembangan skill",
+      "Berbagi pengetahuan dengan anggota komunitas",
+    ],
     icon: UsersRound,
     certificates: [
       {
@@ -68,6 +80,13 @@ const organizations = [
     image: "/img/IMG_3833.jpg",
     description:
       "Berperan sebagai staff divisi event dan MC pada acara Seminar Stock-Summit UI. Mengelola koordinasi acara dan memfasilitasi jalannya seminar dengan audience yang besar.",
+    achievements: [
+      "Mengelola koordinasi teknis dan logistik acara seminar",
+      "Menjadi MC untuk membawakan acara di hadapan ratusan peserta",
+      "Memfasilitasi sesi Q&A dan interaksi dengan pembicara",
+      "Berkoordinasi dengan tim untuk memastikan timeline acara berjalan sesuai rencana",
+      "Membantu registrasi dan handling peserta seminar",
+    ],
     icon: BriefcaseBusiness,
     certificates: [
       {
@@ -83,6 +102,32 @@ const organizations = [
         year: "2024",
         file: "",
         icon: Trophy,
+      },
+    ],
+  },
+  {
+    name: "BAZNAS Volunteer",
+    role: "Volunteer Program Lingkungan",
+    subtitle: "Aksi Nyata Jaga Bumi",
+    period: "Mar 2026",
+    image: "/img/volunteer/baznas_volunteer/WhatsApp Image 2026-06-22 at 12.49.07.jpeg",
+    description:
+      "Terlibat dalam program BAZNAS Volunteer Aksi Nyata Jaga Bumi yang berfokus pada edukasi lingkungan, pengelolaan sampah, dan aktivitas sosial bersama anak-anak. Mendukung pelaksanaan kegiatan agar pesan peduli bumi tersampaikan dengan interaktif dan mudah dipahami.",
+    achievements: [
+      "Mendukung edukasi isu sampah dan kepedulian lingkungan kepada peserta",
+      "Membantu aktivitas recycle serta pilah dan kelola sampah",
+      "Mendampingi kegiatan edukatif bersama anak-anak",
+      "Berkoordinasi dengan tim volunteer untuk menjaga alur kegiatan",
+      "Menerima sertifikat apresiasi sebagai BAZNAS Volunteer",
+    ],
+    icon: Leaf,
+    certificates: [
+      {
+        title: "Sertifikat BAZNAS Volunteer",
+        issuer: "BAZNAS",
+        year: "2026",
+        file: "/img/certificates/Damar Wahyu Putra_Baznaz_Volunteer.pdf",
+        icon: Award,
       },
     ],
   },
@@ -204,7 +249,7 @@ export default function OrganizationsPage() {
 
             <article className="org-feature-card">
               <div className="org-feature-image">
-                <Image src={activeOrg.image} alt={activeOrg.name} fill className="object-cover" priority />
+                <Image src={activeOrg.image} alt={activeOrg.name} fill className="object-contain" priority />
               </div>
 
               <div className="org-feature-content">
@@ -219,6 +264,11 @@ export default function OrganizationsPage() {
                 <p className="org-feature-year">{activeOrg.period}</p>
                 <span className="org-feature-role">{activeOrg.role}</span>
                 <p className="org-feature-description">{activeOrg.description}</p>
+                <ul className="org-feature-highlights" aria-label={`Highlights ${activeOrg.name}`}>
+                  {activeOrg.achievements.map((achievement) => (
+                    <li key={achievement}>{achievement}</li>
+                  ))}
+                </ul>
 
                 {activeCertificates[0].file ? (
                   <a

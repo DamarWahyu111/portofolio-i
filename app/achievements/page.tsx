@@ -113,6 +113,14 @@ const achievements = [
     category: "Data Analysis",
     image: "/img/certificates/DAMAR WAHYU PUTRA - Sertifikat Excel Batch 8.pdf",
   },
+  {
+    id: 14,
+    title: "BAZNAS Volunteer - Aksi Nyata Jaga Bumi",
+    issuer: "BAZNAS",
+    date: "2026",
+    category: "Volunteer",
+    image: "/img/certificates/Damar Wahyu Putra_Baznaz_Volunteer.pdf",
+  },
 ]
 
 export default function AchievementsPage() {

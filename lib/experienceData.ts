@@ -42,6 +42,12 @@ export const experiencesData = [
       "/img/experience_folder/gallery_bpjs/bpjs1.jpeg",
       "/img/experience_folder/gallery_bpjs/bpjs2.jpeg",
     ],
+    certificate: {
+      title: "Sertifikat Magang Reguler BPJS Ketenagakerjaan",
+      issuer: "BPJS Ketenagakerjaan",
+      year: "2025",
+      file: "/img/certificates/Sertifikat Magang Reguler BPJS Ketenagakerjaan Damar Wahyu Putra.pdf",
+    },
     icon: "💼",
   },
   {
@@ -61,6 +67,12 @@ export const experiencesData = [
       "/img/experience_folder/gallery_ojk/pct8.1.jpeg",
       "/img/experience_folder/gallery_ojk/pct8.2.jpeg",
     ],
+    certificate: {
+      title: "Sertifikat Magang Otoritas Jasa Keuangan",
+      issuer: "Otoritas Jasa Keuangan",
+      year: "2026",
+      matchTerms: ["ojk", "otoritas jasa keuangan"],
+    },
     icon: "💼",
   },
 ]

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 
 const experiences = [
   {
@@ -64,6 +64,7 @@ const experiences = [
 interface ExperienceProps {
   initialSelected?: number
   showList?: boolean
+  afterImage?: ReactNode
 }
 
 interface AdaptiveExperienceImageProps {
@@ -104,7 +105,7 @@ function AdaptiveExperienceImage({ src, alt }: AdaptiveExperienceImageProps) {
   )
 }
 
-export default function Experience({ initialSelected = 0, showList = true }: ExperienceProps = {}) {
+export default function Experience({ initialSelected = 0, showList = true, afterImage }: ExperienceProps = {}) {
   const [selected, setSelected] = useState(initialSelected)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -153,6 +154,7 @@ export default function Experience({ initialSelected = 0, showList = true }: Exp
                 src={experiences[selected].image}
                 alt={experiences[selected].title}
               />
+              {afterImage}
 
               <h3 className="text-2xl md:text-3xl font-bold mb-2 text-[rgb(0,217,255)]">{experiences[selected].title}</h3>
               <p className="text-[rgb(255,102,0)] text-xs md:text-sm uppercase tracking-widest mb-3 md:mb-4">
