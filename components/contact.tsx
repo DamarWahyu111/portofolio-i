@@ -3,6 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 
+const CONTACT_EMAIL = "damarwahyup160@gmail.com"
+const CONTACT_PHONE = "+62 878-7498-9010"
+const CONTACT_PHONE_LINK = "tel:+6287874989010"
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,7 +14,8 @@ export default function Contact() {
     subject: "",
     message: "",
   })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
+  const [feedback, setFeedback] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -20,14 +25,42 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const openEmailDraft = () => {
+    const subject = encodeURIComponent(formData.subject)
+    const body = encodeURIComponent(
+      `Halo Damar,\n\n${formData.message}\n\n--\nNama: ${formData.name}\nEmail: ${formData.email}`,
+    )
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
-    setTimeout(() => {
+    setStatus("sending")
+    setFeedback("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        throw new Error(result?.message ?? "Pesan gagal dikirim.")
+      }
+
+      setStatus("sent")
+      setFeedback("Pesan berhasil dikirim. Terima kasih!")
       setFormData({ name: "", email: "", subject: "", message: "" })
-      setSubmitted(false)
-    }, 3000)
+    } catch (error) {
+      setStatus("error")
+      setFeedback(error instanceof Error ? error.message : "Pesan gagal dikirim.")
+    }
   }
 
   return (
@@ -48,14 +81,14 @@ export default function Contact() {
               {
                 icon: "📧",
                 title: "EMAIL",
-                value: "damarwahyup160@gmail.com",
-                link: "mailto:damarwahyup160@gmail.com",
+                value: CONTACT_EMAIL,
+                link: `mailto:${CONTACT_EMAIL}`,
               },
               {
                 icon: "📱",
                 title: "PHONE",
-                value: "+62 878-7498-9010",
-                link: "tel:+622327686909",
+                value: CONTACT_PHONE,
+                link: CONTACT_PHONE_LINK,
               },
               {
                 icon: "📍",
@@ -145,10 +178,31 @@ export default function Contact() {
 
             <button
               type="submit"
+              disabled={status === "sending"}
               className="glass-button glass-button-cyan w-full px-6 py-4 text-sm"
             >
-              {submitted ? "TERIMA KASIH! PESAN TERKIRIM" : "KIRIM PESAN"}
+              {status === "sending" ? "MENGIRIM..." : status === "sent" ? "PESAN TERKIRIM" : "KIRIM PESAN"}
             </button>
+
+            {feedback && (
+              <p
+                className={`font-space-mono text-xs leading-relaxed ${
+                  status === "sent" ? "text-[rgb(0,217,255)]" : "text-[rgb(255,102,0)]"
+                }`}
+              >
+                {feedback}
+              </p>
+            )}
+
+            {status === "error" && (
+              <button
+                type="button"
+                onClick={openEmailDraft}
+                className="w-full rounded-xl border border-white/20 px-4 py-3 font-space-mono text-xs uppercase tracking-widest text-[rgb(130,140,160)] transition-colors hover:border-[rgb(0,217,255)] hover:text-[rgb(0,217,255)]"
+              >
+                Buka Draft Email
+              </button>
+            )}
           </form>
         </div>
       </div>
