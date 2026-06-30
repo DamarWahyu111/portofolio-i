@@ -68,9 +68,10 @@ export const experiencesData = [
       "/img/experience_folder/gallery_ojk/pct8.2.jpeg",
     ],
     certificate: {
-      title: "Sertifikat Magang Otoritas Jasa Keuangan",
+      title: "Surat Keterangan PKL Otoritas Jasa Keuangan",
       issuer: "Otoritas Jasa Keuangan",
       year: "2026",
+      file: "/img/certificates/Surat Keterangan PKL OJK - Damar Wahyu Putra.pdf",
       matchTerms: ["ojk", "otoritas jasa keuangan"],
     },
     icon: "💼",
