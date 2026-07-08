@@ -10,7 +10,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showCvLink, setShowCvLink] = useState(false)
-  const [isCvModalOpen, setIsCvModalOpen] = useState(false)
+  // Mode lama 2 CV (modal pilihan CV): aktifkan lagi kalau ingin menampilkan 2 pilihan CV.
+  // const [isCvModalOpen, setIsCvModalOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -115,6 +116,21 @@ export default function Header() {
             </Link>
           ))}
           {showCvLink && (
+            // Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru.
+            <a
+              href="/Resume_Damar_Wahyu_Putra.pdf"
+              download="Resume_Damar Wahyu Putra.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="liquid-nav-link border-0 bg-transparent px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm cursor-pointer"
+            >
+              <span className="inline-flex items-center gap-2">
+                DOWNLOAD CV
+                <Download size={15} strokeWidth={1.8} />
+              </span>
+            </a>
+            /*
+            Mode lama 2 CV (dinonaktifkan):
             <button
               type="button"
               onClick={() => setIsCvModalOpen(true)}
@@ -125,6 +141,7 @@ export default function Header() {
                 <Download size={15} strokeWidth={1.8} />
               </span>
             </button>
+            */
           )}
         </div>
 
@@ -157,6 +174,24 @@ export default function Header() {
             </Link>
           ))}
           {showCvLink && (
+            // Mode 1 CV aktif: versi mobile langsung mengunduh Resume terbaru.
+            <a
+              href="/Resume_Damar_Wahyu_Putra.pdf"
+              download="Resume_Damar Wahyu Putra.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                setMobileMenuOpen(false)
+              }}
+              className="liquid-nav-link flex w-full justify-start border-0 bg-transparent px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors cursor-pointer"
+            >
+              <span className="inline-flex items-center gap-2">
+                DOWNLOAD CV
+                <Download size={15} strokeWidth={1.8} />
+              </span>
+            </a>
+            /*
+            Mode lama 2 CV (dinonaktifkan):
             <button
               type="button"
               onClick={() => {
@@ -170,10 +205,13 @@ export default function Header() {
                 <Download size={15} strokeWidth={1.8} />
               </span>
             </button>
+            */
           )}
         </div>
       )}
 
+      {/*
+      Mode lama 2 CV (dinonaktifkan):
       {isCvModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
           <div className="glass-panel p-6 max-w-sm w-full">
@@ -211,6 +249,7 @@ export default function Header() {
           </div>
         </div>
       )}
+      */}
     </header>
   )
 }

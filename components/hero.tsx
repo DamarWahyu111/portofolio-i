@@ -201,7 +201,8 @@ function HeroPhotoBadge() {
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  // Mode lama 2 CV (modal pilihan CV): aktifkan lagi kalau ingin menampilkan 2 pilihan CV.
+  // const [isModalOpen, setIsModalOpen] = useState(false)
   const fullText = "DAMAR WAHYU PUTRA"
 
   useEffect(() => {
@@ -243,12 +244,25 @@ export default function Hero() {
             >
               View My Work
             </Link>
+            {/* Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru. */}
+            <a
+              href="/Resume_Damar_Wahyu_Putra.pdf"
+              download="Resume_Damar Wahyu Putra.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
+            >
+              Download CV
+            </a>
+            {/*
+            Mode lama 2 CV (dinonaktifkan):
             <button
               onClick={() => setIsModalOpen(true)}
               className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
             >
               Download CV
             </button>
+            */}
           </div>
         </div>
 
@@ -258,7 +272,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* CV Modal */}
+      {/*
+      CV Modal - Mode lama 2 CV (dinonaktifkan):
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
           <div className="glass-panel p-6 max-w-sm w-full">
@@ -296,6 +311,7 @@ export default function Hero() {
           </div>
         </div>
       )}
+      */}
     </section>
   )
 }
