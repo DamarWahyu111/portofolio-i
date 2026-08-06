@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-space-mono bg-[rgb(10,14,39)] text-white relative overflow-x-hidden">
         <div className="glass-bg pointer-events-none"></div>
+        <div className="glass-bg-overlay pointer-events-none"></div>
 
         {/* Content wrapper */}
         <div className="relative z-10">{children}</div>

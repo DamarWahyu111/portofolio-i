@@ -56,18 +56,18 @@ function ExperienceCertificateCard({
           <button
             type="button"
             onClick={onOpen}
-            className="rounded border border-[rgb(0,217,255)] px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(0,217,255)] transition-colors hover:bg-[rgb(0,217,255)]/10"
+            className="liquid-nav-link relative group overflow-hidden rounded px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(0,217,255)] transition-all duration-300 hover:text-[rgb(0,217,255)]"
           >
-            Lihat Sertifikat
+            <span>LIHAT SERTIFIKAT</span>
           </button>
           <a
             href={certificate.file}
             download
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded border border-[rgb(255,102,0)] px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(255,102,0)] transition-colors hover:bg-[rgb(255,102,0)]/10"
+            className="liquid-nav-link relative group overflow-hidden rounded px-4 py-2 text-center font-orbitron text-xs font-bold uppercase tracking-widest text-[rgb(255,102,0)] transition-all duration-300 hover:text-[rgb(255,102,0)]"
           >
-            Download
+            <span>DOWNLOAD</span>
           </a>
         </div>
       </div>

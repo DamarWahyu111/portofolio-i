@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -26,9 +28,9 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className="text-sm font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-colors uppercase tracking-wider"
+                    className="liquid-nav-link inline-block px-3 py-1.5 -ml-3 text-sm font-bold font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-all duration-300 uppercase tracking-widest relative group"
                   >
-                    {link}
+                    <span>{link}</span>
                   </a>
                 </li>
               ))}
@@ -49,9 +51,9 @@ export default function Footer() {
                 <li key={social.name}>
                   <a
                     href={social.url}
-                    className="text-sm font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(255,102,0)] transition-colors uppercase tracking-wider"
+                    className="liquid-nav-link inline-block px-3 py-1.5 -ml-3 text-sm font-bold font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(255,102,0)] transition-all duration-300 uppercase tracking-widest relative group"
                   >
-                    {social.name}
+                    <span>{social.name}</span>
                   </a>
                 </li>
               ))}
@@ -82,18 +84,18 @@ export default function Footer() {
               © {currentYear} DAMAR WAHYU PUTRA. ALL RIGHTS RESERVED.
             </p>
             <div className="flex gap-6">
-              <a
-                href="#"
-                className="text-xs font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-colors uppercase tracking-wider"
+              <Link
+                href="/privacy-policy"
+                className="liquid-nav-link inline-block px-4 py-2 text-xs font-bold font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-all duration-300 uppercase tracking-widest relative group"
               >
-                PRIVACY POLICY
-              </a>
-              <a
-                href="#"
-                className="text-xs font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-colors uppercase tracking-wider"
+                <span>PRIVACY POLICY</span>
+              </Link>
+              <Link
+                href="/terms-of-service"
+                className="liquid-nav-link inline-block px-4 py-2 text-xs font-bold font-space-mono text-[rgb(130,140,160)] hover:text-[rgb(0,217,255)] transition-all duration-300 uppercase tracking-widest relative group"
               >
-                TERMS OF SERVICE
-              </a>
+                <span>TERMS OF SERVICE</span>
+              </Link>
             </div>
           </div>
         </div>
