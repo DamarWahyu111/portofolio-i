@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import { ExternalLink, QrCode, X } from "lucide-react"
 import QRCode from "react-qr-code"
+import { CV_FILE_PATH, getAbsoluteCvUrl } from "@/lib/cv"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -24,7 +25,7 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    setCvUrl(`${window.location.origin}/cv`)
+    setCvUrl(getAbsoluteCvUrl(window.location.origin))
   }, [])
 
   useEffect(() => {
@@ -232,7 +233,9 @@ export default function Header() {
             </p>
 
             <Link
-              href="/cv"
+              href={CV_FILE_PATH}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsCvQrOpen(false)}
               className="glass-button glass-button-cyan inline-flex items-center justify-center gap-2 px-6 py-3 text-sm"
             >

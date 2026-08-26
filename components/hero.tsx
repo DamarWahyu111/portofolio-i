@@ -3,6 +3,7 @@
 import { type PointerEvent, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import QRCode from "react-qr-code"
+import { CV_FILE_PATH, getAbsoluteCvUrl } from "@/lib/cv"
 
 function HeroPhotoBadge() {
   const stageRef = useRef<HTMLDivElement>(null)
@@ -206,7 +207,7 @@ export default function Hero() {
   const fullText = "DAMAR WAHYU PUTRA"
 
   useEffect(() => {
-    setCvUrl(`${window.location.origin}/cv`)
+    setCvUrl(getAbsoluteCvUrl(window.location.origin))
     let index = 0
     const interval = setInterval(() => {
       setDisplayText(fullText.slice(0, index + 1))
@@ -261,7 +262,12 @@ export default function Hero() {
                 <p className="font-orbitron text-[rgb(0,217,255)] font-bold text-sm mb-1 tracking-wide">Scan QR for CV</p>
                 <p className="text-xs font-space-mono text-[rgb(130,140,160)] max-w-[150px] leading-tight">
                   Scan with your phone, or{" "}
-                  <Link href="/cv" className="text-[rgb(0,217,255)] transition-colors hover:text-white">
+                  <Link
+                    href={CV_FILE_PATH}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[rgb(0,217,255)] transition-colors hover:text-white"
+                  >
                     click CV
                   </Link>
                   .
