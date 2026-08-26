@@ -203,8 +203,6 @@ function HeroPhotoBadge() {
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
   const [cvUrl, setCvUrl] = useState("")
-  // Mode lama 2 CV (modal pilihan CV): aktifkan lagi kalau ingin menampilkan 2 pilihan CV.
-  // const [isModalOpen, setIsModalOpen] = useState(false)
   const fullText = "DAMAR WAHYU PUTRA"
 
   useEffect(() => {
@@ -248,29 +246,10 @@ export default function Hero() {
               >
                 View My Work
               </Link>
-              {/* Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru. */}
-              <a
-                href="/Resume_Damar Wahyu Putra.pdf"
-                download="Resume_Damar Wahyu Putra.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
-              >
-                Download CV
-              </a>
-              {/*
-              Mode lama 2 CV (dinonaktifkan):
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
-              >
-                Download CV
-              </button>
-              */}
             </div>
             
             {/* QR Code Section */}
-            <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors backdrop-blur-sm group cursor-pointer" onClick={() => window.location.href='/cv'}>
+            <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors backdrop-blur-sm group">
               <div className="bg-white p-2 rounded-lg group-hover:scale-105 transition-transform">
                 {cvUrl ? (
                   <QRCode value={cvUrl} size={60} />
@@ -279,8 +258,14 @@ export default function Hero() {
                 )}
               </div>
               <div className="pr-2">
-                <p className="font-orbitron text-[rgb(0,217,255)] font-bold text-sm mb-1 tracking-wide">Scan for CV</p>
-                <p className="text-xs font-space-mono text-[rgb(130,140,160)] max-w-[120px] leading-tight">View directly on your phone</p>
+                <p className="font-orbitron text-[rgb(0,217,255)] font-bold text-sm mb-1 tracking-wide">Scan QR for CV</p>
+                <p className="text-xs font-space-mono text-[rgb(130,140,160)] max-w-[150px] leading-tight">
+                  Scan with your phone, or{" "}
+                  <Link href="/cv" className="text-[rgb(0,217,255)] transition-colors hover:text-white">
+                    click CV
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </div>
@@ -292,46 +277,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/*
-      CV Modal - Mode lama 2 CV (dinonaktifkan):
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-          <div className="glass-panel p-6 max-w-sm w-full">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold font-orbitron text-[rgb(0,217,255)]">Pilih CV</h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-[rgb(130,140,160)] hover:text-white transition-colors text-2xl leading-none"
-              >
-                &times;
-              </button>
-            </div>
-            <div className="flex flex-col gap-4">
-              <a
-                href="/CV_Damar-Wahyu-Putra.pdf"
-                download="CV_Damar-Wahyu-Putra.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button glass-button-cyan px-6 py-3 text-sm text-center block"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Download CV Umum
-              </a>
-              <a
-                href="/CV DAMAR WAHYU PUTRA_IT.pdf"
-                download="CV DAMAR WAHYU PUTRA_IT.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button glass-button-orange px-6 py-3 text-sm text-center block"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Download CV Khusus IT
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-      */}
     </section>
   )
 }

@@ -4,14 +4,15 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import { Download } from "lucide-react"
+import { ExternalLink, QrCode, X } from "lucide-react"
+import QRCode from "react-qr-code"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showCvLink, setShowCvLink] = useState(false)
-  // Mode lama 2 CV (modal pilihan CV): aktifkan lagi kalau ingin menampilkan 2 pilihan CV.
-  // const [isCvModalOpen, setIsCvModalOpen] = useState(false)
+  const [isCvQrOpen, setIsCvQrOpen] = useState(false)
+  const [cvUrl, setCvUrl] = useState("")
   const pathname = usePathname()
 
   useEffect(() => {
@@ -21,6 +22,24 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    setCvUrl(`${window.location.origin}/cv`)
+  }, [])
+
+  useEffect(() => {
+    if (!isCvQrOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsCvQrOpen(false)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isCvQrOpen])
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -116,32 +135,16 @@ export default function Header() {
             </Link>
           ))}
           {showCvLink && (
-            // Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru.
-            <a
-              href="/Resume_Damar_Wahyu_Putra.pdf"
-              download="Resume_Damar Wahyu Putra.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-nav-link border-0 bg-transparent px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm cursor-pointer"
-            >
-              <span className="inline-flex items-center gap-2">
-                DOWNLOAD CV
-                <Download size={15} strokeWidth={1.8} />
-              </span>
-            </a>
-            /*
-            Mode lama 2 CV (dinonaktifkan):
             <button
               type="button"
-              onClick={() => setIsCvModalOpen(true)}
+              onClick={() => setIsCvQrOpen(true)}
               className="liquid-nav-link border-0 bg-transparent px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm cursor-pointer"
             >
               <span className="inline-flex items-center gap-2">
-                DOWNLOAD CV
-                <Download size={15} strokeWidth={1.8} />
+                Scan QR for CV
+                <QrCode size={15} strokeWidth={1.8} />
               </span>
             </button>
-            */
           )}
         </div>
 
@@ -174,82 +177,71 @@ export default function Header() {
             </Link>
           ))}
           {showCvLink && (
-            // Mode 1 CV aktif: versi mobile langsung mengunduh Resume terbaru.
-            <a
-              href="/Resume_Damar_Wahyu_Putra.pdf"
-              download="Resume_Damar Wahyu Putra.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                setMobileMenuOpen(false)
-              }}
-              className="liquid-nav-link flex w-full justify-start border-0 bg-transparent px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors cursor-pointer"
-            >
-              <span className="inline-flex items-center gap-2">
-                DOWNLOAD CV
-                <Download size={15} strokeWidth={1.8} />
-              </span>
-            </a>
-            /*
-            Mode lama 2 CV (dinonaktifkan):
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false)
-                setIsCvModalOpen(true)
+                setIsCvQrOpen(true)
               }}
               className="liquid-nav-link flex w-full justify-start border-0 bg-transparent px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors cursor-pointer"
             >
               <span className="inline-flex items-center gap-2">
-                DOWNLOAD CV
-                <Download size={15} strokeWidth={1.8} />
+                Scan QR for CV
+                <QrCode size={15} strokeWidth={1.8} />
               </span>
             </button>
-            */
           )}
         </div>
       )}
 
-      {/*
-      Mode lama 2 CV (dinonaktifkan):
-      {isCvModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-          <div className="glass-panel p-6 max-w-sm w-full">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold font-orbitron text-[rgb(0,217,255)]">Pilih CV</h3>
-              <button
-                onClick={() => setIsCvModalOpen(false)}
-                className="text-[rgb(130,140,160)] hover:text-white transition-colors text-2xl leading-none"
-              >
-                &times;
-              </button>
+      {isCvQrOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cv-qr-title"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
+          onClick={() => setIsCvQrOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[rgb(10,16,32)] p-6 text-center shadow-2xl shadow-[rgb(0,217,255)]/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close CV QR popup"
+              onClick={() => setIsCvQrOpen(false)}
+              className="absolute right-4 top-4 text-[rgb(130,140,160)] transition-colors hover:text-white"
+            >
+              <X size={20} strokeWidth={1.8} />
+            </button>
+
+            <h2 id="cv-qr-title" className="mb-4 pr-8 font-orbitron text-lg font-bold text-[rgb(0,217,255)]">
+              Scan QR for CV
+            </h2>
+
+            <div className="mx-auto mb-5 flex h-44 w-44 items-center justify-center rounded-xl bg-white p-4">
+              {cvUrl ? (
+                <QRCode value={cvUrl} size={144} />
+              ) : (
+                <div className="h-36 w-36 animate-pulse rounded bg-gray-200" />
+              )}
             </div>
-            <div className="flex flex-col gap-4">
-              <a
-                href="/CV_Damar-Wahyu-Putra.pdf"
-                download="CV_Damar-Wahyu-Putra.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button glass-button-cyan px-6 py-3 text-sm text-center block"
-                onClick={() => setIsCvModalOpen(false)}
-              >
-                Download CV Umum
-              </a>
-              <a
-                href="/CV DAMAR WAHYU PUTRA_IT.pdf"
-                download="CV DAMAR WAHYU PUTRA_IT.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button glass-button-orange px-6 py-3 text-sm text-center block"
-                onClick={() => setIsCvModalOpen(false)}
-              >
-                Download CV Khusus IT
-              </a>
-            </div>
+
+            <p className="mb-5 font-space-mono text-sm leading-relaxed text-[rgb(170,180,196)]">
+              Scan the QR code to view my CV on your phone, or click CV if you do not want to scan.
+            </p>
+
+            <Link
+              href="/cv"
+              onClick={() => setIsCvQrOpen(false)}
+              className="glass-button glass-button-cyan inline-flex items-center justify-center gap-2 px-6 py-3 text-sm"
+            >
+              Open CV
+              <ExternalLink size={16} strokeWidth={1.8} />
+            </Link>
           </div>
         </div>
       )}
-      */}
     </header>
   )
 }
