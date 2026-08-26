@@ -2,6 +2,7 @@
 
 import { type PointerEvent, useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import QRCode from "react-qr-code"
 
 function HeroPhotoBadge() {
   const stageRef = useRef<HTMLDivElement>(null)
@@ -201,11 +202,13 @@ function HeroPhotoBadge() {
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
+  const [cvUrl, setCvUrl] = useState("")
   // Mode lama 2 CV (modal pilihan CV): aktifkan lagi kalau ingin menampilkan 2 pilihan CV.
   // const [isModalOpen, setIsModalOpen] = useState(false)
   const fullText = "DAMAR WAHYU PUTRA"
 
   useEffect(() => {
+    setCvUrl(`${window.location.origin}/cv`)
     let index = 0
     const interval = setInterval(() => {
       setDisplayText(fullText.slice(0, index + 1))
@@ -236,33 +239,50 @@ export default function Hero() {
             combined with clean design so that every interaction feels intuitive.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="#projects"
-              className="glass-button glass-button-cyan px-8 py-3 text-sm flex items-center justify-center"
-            >
-              View My Work
-            </Link>
-            {/* Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru. */}
-            <a
-              href="/Resume_Damar_Wahyu_Putra.pdf"
-              download="Resume_Damar Wahyu Putra.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
-            >
-              Download CV
-            </a>
-            {/*
-            Mode lama 2 CV (dinonaktifkan):
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
-            >
-              Download CV
-            </button>
-            */}
+          {/* CTA Buttons & QR Code */}
+          <div className="flex flex-col xl:flex-row flex-wrap gap-6 items-start xl:items-center mt-4">
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="#projects"
+                className="glass-button glass-button-cyan px-8 py-3 text-sm flex items-center justify-center"
+              >
+                View My Work
+              </Link>
+              {/* Mode 1 CV aktif: tombol Download CV langsung mengunduh Resume terbaru. */}
+              <a
+                href="/Resume_Damar Wahyu Putra.pdf"
+                download="Resume_Damar Wahyu Putra.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
+              >
+                Download CV
+              </a>
+              {/*
+              Mode lama 2 CV (dinonaktifkan):
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="glass-button glass-button-orange px-8 py-3 text-sm flex items-center justify-center"
+              >
+                Download CV
+              </button>
+              */}
+            </div>
+            
+            {/* QR Code Section */}
+            <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors backdrop-blur-sm group cursor-pointer" onClick={() => window.location.href='/cv'}>
+              <div className="bg-white p-2 rounded-lg group-hover:scale-105 transition-transform">
+                {cvUrl ? (
+                  <QRCode value={cvUrl} size={60} />
+                ) : (
+                  <div className="w-[60px] h-[60px] bg-gray-200 animate-pulse rounded" />
+                )}
+              </div>
+              <div className="pr-2">
+                <p className="font-orbitron text-[rgb(0,217,255)] font-bold text-sm mb-1 tracking-wide">Scan for CV</p>
+                <p className="text-xs font-space-mono text-[rgb(130,140,160)] max-w-[120px] leading-tight">View directly on your phone</p>
+              </div>
+            </div>
           </div>
         </div>
 
