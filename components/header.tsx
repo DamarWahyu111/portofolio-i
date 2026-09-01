@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import { ExternalLink, QrCode, X } from "lucide-react"
 import QRCode from "react-qr-code"
 import { CV_FILE_PATH, getAbsoluteCvUrl } from "@/lib/cv"
+import GlassSurface from "@/components/ui/GlassSurface"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -96,57 +97,88 @@ export default function Header() {
   ]
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-nav" : "bg-transparent"
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 hover:opacity-80 transition-all duration-300 group"
-        >
-          <div className="relative">
-            <Image
-              src="/logo-site.jpg"
-              alt="Damar Wahyu Putra Logo"
-              width={45}
-              height={45}
-              className="rounded-lg border-2 border-[rgb(0,217,255)]/30 group-hover:border-[rgb(0,217,255)] transition-all duration-300 object-cover"
-              priority
-            />
-            <div className="absolute inset-0 rounded-lg bg-[rgb(0,217,255)]/0 group-hover:bg-[rgb(0,217,255)]/10 transition-all duration-300"></div>
-          </div>
-          <span className="text-xl md:text-2xl font-black font-orbitron text-[rgb(0,217,255)] hover:text-[rgb(95,232,255)] transition-all duration-300 hidden sm:inline drop-shadow-md">
-            DAMAR
-          </span>
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <nav className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={item.onClick}
-              className="liquid-nav-link px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm"
-            >
-              <span>{item.label}</span>
-            </Link>
-          ))}
-          {showCvLink && (
-            <button
-              type="button"
-              onClick={() => setIsCvQrOpen(true)}
-              className="liquid-nav-link border-0 bg-transparent px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm cursor-pointer"
-            >
-              <span className="inline-flex items-center gap-2">
-                Scan QR for CV
-                <QrCode size={15} strokeWidth={1.8} />
-              </span>
-            </button>
-          )}
+        {/* Logo — wrapped in GlassSurface pill */}
+        <GlassSurface
+          width="auto"
+          height="auto"
+          borderRadius={14}
+          brightness={55}
+          opacity={scrolled ? 0.92 : 0.75}
+          blur={12}
+          distortionScale={-150}
+          backgroundOpacity={scrolled ? 0.12 : 0.06}
+          saturation={1.2}
+          redOffset={0}
+          greenOffset={8}
+          blueOffset={16}
+          style={{ display: 'inline-flex' }}
+        >
+          <Link
+            href="/"
+            className="flex items-center gap-3 hover:opacity-80 transition-all duration-300 group px-3 py-2"
+          >
+            <div className="relative">
+              <Image
+                src="/logo-site.jpg"
+                alt="Damar Wahyu Putra Logo"
+                width={38}
+                height={38}
+                className="rounded-lg border-2 border-[rgb(0,217,255)]/30 group-hover:border-[rgb(0,217,255)] transition-all duration-300 object-cover"
+                priority
+              />
+              <div className="absolute inset-0 rounded-lg bg-[rgb(0,217,255)]/0 group-hover:bg-[rgb(0,217,255)]/10 transition-all duration-300"></div>
+            </div>
+            <span className="text-xl md:text-2xl font-black font-orbitron text-[rgb(0,217,255)] hover:text-[rgb(95,232,255)] transition-all duration-300 hidden sm:inline drop-shadow-md">
+              DAMAR
+            </span>
+          </Link>
+        </GlassSurface>
+
+        {/* Desktop Navigation — all nav links wrapped in one GlassSurface pill */}
+        <div className="hidden md:block">
+          <GlassSurface
+            width="auto"
+            height="auto"
+            borderRadius={50}
+            brightness={55}
+            opacity={scrolled ? 0.92 : 0.75}
+            blur={12}
+            distortionScale={-150}
+            backgroundOpacity={scrolled ? 0.12 : 0.06}
+            saturation={1.2}
+            redOffset={0}
+            greenOffset={8}
+            blueOffset={16}
+            style={{ display: 'inline-flex' }}
+          >
+            <div className="flex items-center gap-1 px-3 py-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={item.onClick}
+                  className="liquid-nav-link px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm"
+                >
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+              {showCvLink && (
+                <button
+                  type="button"
+                  onClick={() => setIsCvQrOpen(true)}
+                  className="liquid-nav-link border-0 bg-transparent px-4 py-2 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-all duration-300 relative group drop-shadow-sm cursor-pointer"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    Scan QR for CV
+                    <QrCode size={15} strokeWidth={1.8} />
+                  </span>
+                </button>
+              )}
+            </div>
+          </GlassSurface>
         </div>
 
         {/* Mobile Menu Button */}
@@ -163,35 +195,50 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-nav p-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={(e) => {
-                if (item.onClick) item.onClick(e)
-                setMobileMenuOpen(false)
-              }}
-              className="liquid-nav-link flex w-full justify-start px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors"
-            >
-              <span>{item.label}</span>
-            </Link>
-          ))}
-          {showCvLink && (
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                setIsCvQrOpen(true)
-              }}
-              className="liquid-nav-link flex w-full justify-start border-0 bg-transparent px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors cursor-pointer"
-            >
-              <span className="inline-flex items-center gap-2">
-                Scan QR for CV
-                <QrCode size={15} strokeWidth={1.8} />
-              </span>
-            </button>
-          )}
+        <div className="md:hidden px-4 pb-4">
+          <GlassSurface
+            width="100%"
+            height="auto"
+            borderRadius={20}
+            brightness={55}
+            opacity={0.92}
+            blur={16}
+            distortionScale={-150}
+            backgroundOpacity={0.12}
+            saturation={1.2}
+            style={{ display: 'block' }}
+          >
+            <div className="p-2 w-full">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => {
+                    if (item.onClick) item.onClick(e)
+                    setMobileMenuOpen(false)
+                  }}
+                  className="liquid-nav-link flex w-full justify-start px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors"
+                >
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+              {showCvLink && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    setIsCvQrOpen(true)
+                  }}
+                  className="liquid-nav-link flex w-full justify-start border-0 bg-transparent px-4 py-3 text-sm font-bold font-space-mono uppercase tracking-widest text-[rgb(170,180,196)] hover:text-[rgb(0,217,255)] transition-colors cursor-pointer"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    Scan QR for CV
+                    <QrCode size={15} strokeWidth={1.8} />
+                  </span>
+                </button>
+              )}
+            </div>
+          </GlassSurface>
         </div>
       )}
 

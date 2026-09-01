@@ -186,9 +186,8 @@ export default function Contact() {
 
             {feedback && (
               <p
-                className={`font-space-mono text-xs leading-relaxed ${
-                  status === "sent" ? "text-[rgb(0,217,255)]" : "text-[rgb(255,102,0)]"
-                }`}
+                className={`font-space-mono text-xs leading-relaxed ${status === "sent" ? "text-[rgb(0,217,255)]" : "text-[rgb(255,102,0)]"
+                  }`}
               >
                 {feedback}
               </p>

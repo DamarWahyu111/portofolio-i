@@ -248,7 +248,7 @@ export default function Hero() {
                 View My Work
               </Link>
             </div>
-            
+
             {/* QR Code Section */}
             <div className="flex items-center gap-4 p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors backdrop-blur-sm group">
               <div className="bg-white p-2 rounded-lg group-hover:scale-105 transition-transform">

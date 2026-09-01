@@ -2644,10 +2644,10 @@
   isolation: isolate;
   color: rgb(229, 235, 244);
   background:
-    radial-gradient(circle at 12% 14%, rgba(118, 139, 255, 0.13), transparent 28%),
-    radial-gradient(circle at 84% 20%, rgba(166, 112, 255, 0.1), transparent 24%),
-    radial-gradient(circle at 50% 96%, rgba(91, 107, 185, 0.12), transparent 28%),
-    linear-gradient(180deg, rgb(6, 9, 16), rgb(9, 12, 20) 46%, rgb(5, 8, 14));
+    radial-gradient(circle at 12% 14%, rgba(255, 255, 255, 0.03), transparent 28%),
+    radial-gradient(circle at 84% 20%, rgba(0, 217, 255, 0.04), transparent 24%),
+    radial-gradient(circle at 50% 96%, rgba(255, 255, 255, 0.02), transparent 28%),
+    var(--background);
 }
 
 .about-page::before {
@@ -2673,11 +2673,11 @@
   pointer-events: none;
   transform: translateX(-50%);
   background:
-    radial-gradient(circle at 15% 24%, rgba(98, 128, 255, 0.2), transparent 30%),
-    radial-gradient(circle at 78% 18%, rgba(186, 149, 255, 0.16), transparent 28%),
-    radial-gradient(circle at 54% 78%, rgba(129, 149, 255, 0.12), transparent 32%);
-  filter: blur(28px);
-  opacity: 0.85;
+    radial-gradient(circle at 15% 24%, rgba(255, 255, 255, 0.05), transparent 30%),
+    radial-gradient(circle at 78% 18%, rgba(0, 217, 255, 0.08), transparent 28%),
+    radial-gradient(circle at 54% 78%, rgba(255, 255, 255, 0.03), transparent 32%);
+  filter: blur(35px);
+  opacity: 0.8;
 }
 
 .about-layout {
@@ -2698,31 +2698,30 @@
   gap: 0.55rem;
   margin-bottom: 1.1rem;
   padding: 0.36rem 0.9rem;
-  border: 1px solid rgba(101, 130, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
-  background: rgba(26, 34, 62, 0.48);
-  color: rgb(168, 185, 255);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  color: rgb(198, 202, 211);
   font-family: var(--font-orbitron);
   font-size: 0.76rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  box-shadow:
-    0 0 18px rgba(105, 127, 255, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .about-main > h1 {
   max-width: 46rem;
   margin: 0 0 1rem;
-  background: linear-gradient(180deg, rgb(238, 244, 255), rgb(151, 166, 202));
+  background: linear-gradient(180deg, rgb(255, 255, 255), rgb(170, 180, 196));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-size: clamp(2.35rem, 5.2vw, 4.7rem);
   line-height: 1.02;
   letter-spacing: 0.045em;
-  text-shadow: 0 0 34px rgba(120, 144, 255, 0.26);
+  text-shadow: 0 0 34px rgba(255, 255, 255, 0.1);
 }
 
 .about-intro {
@@ -2738,7 +2737,7 @@
 }
 
 .about-intro span {
-  color: rgb(86, 133, 255);
+  color: rgb(0, 217, 255);
   font-weight: 800;
 }
 
@@ -2754,8 +2753,8 @@
   position: absolute;
   left: 1.45rem;
   width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(185, 205, 255, 0.72) 12%, rgba(149, 169, 255, 0.56) 84%, transparent);
-  box-shadow: 0 0 20px rgba(123, 145, 255, 0.28);
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2) 12%, rgba(255, 255, 255, 0.1) 84%, transparent);
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.15);
 }
 
 .about-journey::before {
@@ -2785,17 +2784,20 @@
   padding: 1.15rem 1.55rem;
   overflow: visible;
   isolation: isolate;
-  border: 1px solid rgba(190, 205, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.5rem;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(129, 151, 255, 0.15), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018) 56%, rgba(255, 255, 255, 0.045)),
-    rgba(15, 20, 31, 0.82);
+  background: rgba(255, 255, 255, 0.02);
   box-shadow:
-    0 22px 58px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.11);
-  backdrop-filter: blur(22px) saturate(145%);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
+    0 22px 58px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  transition: all 0.3s ease;
+}
+
+.about-journey-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .about-journey-card::before {
@@ -2805,8 +2807,7 @@
   left: -2.88rem;
   width: 2.9rem;
   height: 1px;
-  background: linear-gradient(90deg, rgba(177, 196, 255, 0.66), rgba(177, 196, 255, 0.08));
-  box-shadow: 0 0 14px rgba(126, 148, 255, 0.34);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
 }
 
 .about-journey-card::after,
@@ -2820,10 +2821,8 @@
 .about-journey-card::after {
   inset: 0;
   border-radius: inherit;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045), transparent 28%),
-    radial-gradient(circle at 100% 0%, rgba(104, 128, 255, 0.13), transparent 24%);
-  opacity: 0.75;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 40%);
+  opacity: 0.5;
 }
 
 .about-journey-card > *:not(.about-journey-node) {
@@ -2838,12 +2837,12 @@
   z-index: 2;
   width: 1.35rem;
   height: 1.35rem;
-  border: 2px solid rgb(191, 204, 255);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 999px;
-  background: radial-gradient(circle, rgb(225, 233, 255) 0 25%, rgb(77, 95, 170) 27% 48%, rgb(13, 17, 31) 50%);
+  background: rgb(16, 17, 20);
   box-shadow:
-    0 0 0 0.34rem rgba(139, 89, 255, 0.34),
-    0 0 22px rgba(135, 113, 255, 0.68);
+    0 0 0 0.3rem rgba(255, 255, 255, 0.1),
+    0 0 15px rgba(255, 255, 255, 0.2);
   transform: translateY(-50%);
 }
 
@@ -2851,15 +2850,11 @@
 .about-education-icon {
   display: grid;
   place-items: center;
-  border: 1px solid rgba(190, 205, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.42rem;
-  background:
-    radial-gradient(circle at 35% 20%, rgba(168, 134, 255, 0.25), transparent 36%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(102, 124, 255, 0.075));
-  color: rgb(157, 113, 255);
-  box-shadow:
-    0 0 20px rgba(125, 91, 255, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgb(198, 202, 211);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .about-journey-icon {
@@ -2870,12 +2865,11 @@
 .about-journey-card h2,
 .about-education-heading h2 {
   margin: 0;
-  color: rgb(169, 160, 255);
+  color: rgb(255, 255, 255);
   font-size: clamp(0.88rem, 1.25vw, 1.04rem);
   line-height: 1.35;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  text-shadow: 0 0 18px rgba(137, 111, 255, 0.34);
 }
 
 .about-journey-card p {
@@ -2905,8 +2899,7 @@
   left: -2.9rem;
   width: 2.9rem;
   height: 1px;
-  background: linear-gradient(90deg, rgba(177, 196, 255, 0.66), rgba(177, 196, 255, 0.08));
-  box-shadow: 0 0 14px rgba(126, 148, 255, 0.34);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
 }
 
 .about-education-heading .about-journey-node {
@@ -2926,17 +2919,20 @@
   min-height: 14rem;
   padding: 1.15rem 1.55rem 1.25rem;
   overflow: visible;
-  border: 1px solid rgba(190, 205, 255, 0.17);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.5rem;
-  background:
-    radial-gradient(circle at 7% 0%, rgba(136, 156, 255, 0.13), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.064), rgba(255, 255, 255, 0.018) 58%, rgba(255, 255, 255, 0.045)),
-    rgba(14, 18, 29, 0.86);
+  background: rgba(255, 255, 255, 0.02);
   box-shadow:
-    0 24px 68px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(22px) saturate(145%);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
+    0 24px 68px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  transition: all 0.3s ease;
+}
+
+.about-education-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .about-education-card:first-child::after {
@@ -2955,12 +2951,12 @@
   z-index: 2;
   width: 1.12rem;
   height: 1.12rem;
-  border: 2px solid rgb(191, 204, 255);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 999px;
-  background: radial-gradient(circle, rgb(221, 229, 255) 0 24%, rgb(113, 84, 205) 26% 50%, rgb(13, 17, 31) 52%);
+  background: rgb(16, 17, 20);
   box-shadow:
-    0 0 0 0.28rem rgba(139, 89, 255, 0.28),
-    0 0 20px rgba(135, 113, 255, 0.62);
+    0 0 0 0.28rem rgba(255, 255, 255, 0.1),
+    0 0 15px rgba(255, 255, 255, 0.2);
   transform: translateY(-50%);
 }
 
@@ -2969,13 +2965,13 @@
   align-items: center;
   width: fit-content;
   padding: 0.38rem 0.72rem;
-  border-radius: 0.18rem;
-  background: linear-gradient(135deg, rgb(122, 102, 214), rgb(90, 74, 174));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
   color: rgb(238, 241, 255);
   font-family: var(--font-space-mono);
   font-size: 0.78rem;
   font-weight: 700;
-  box-shadow: 0 0 20px rgba(120, 93, 230, 0.22);
 }
 
 .about-education-card-main {
@@ -2991,7 +2987,7 @@
 .about-education-icon {
   width: 4.35rem;
   height: 4.35rem;
-  color: rgb(164, 119, 255);
+  color: rgb(198, 202, 211);
   border: 0;
   background: transparent;
   box-shadow: none;
@@ -3047,40 +3043,19 @@
   top: 6.5rem;
   overflow: hidden;
   padding: 2.1rem 1.8rem 1.6rem;
-  border: 1px solid rgba(148, 174, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.9rem;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(126, 149, 255, 0.14), transparent 28%),
-    linear-gradient(152deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.022) 56%, rgba(255, 255, 255, 0.055)),
-    rgba(15, 20, 31, 0.84);
+  background: rgba(255, 255, 255, 0.02);
   box-shadow:
-    0 32px 90px rgba(0, 0, 0, 0.46),
-    0 0 44px rgba(95, 131, 255, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.17);
-  backdrop-filter: blur(26px) saturate(150%);
-  -webkit-backdrop-filter: blur(26px) saturate(150%);
+    0 32px 90px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
 }
 
 .about-profile-card::before {
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 30%, rgba(255, 255, 255, 0.035)),
-    radial-gradient(circle at 100% 0%, rgba(170, 118, 255, 0.22), transparent 18%);
-}
-
-.about-profile-card::after {
-  content: "";
-  position: absolute;
-  top: -0.45rem;
-  right: -0.4rem;
-  width: 1.05rem;
-  height: 1.05rem;
-  border-radius: 50%;
-  background: rgb(214, 220, 255);
-  box-shadow:
-    0 0 18px rgba(136, 160, 255, 0.9),
-    1.35rem 1.55rem 0 -0.35rem rgb(198, 142, 255),
-    1.35rem 1.55rem 18px rgba(175, 112, 255, 0.82);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%);
 }
 
 .about-profile-card > * {
@@ -3096,27 +3071,8 @@
   place-items: center;
   margin: 0 auto 1rem;
   border-radius: 999px;
-  background:
-    radial-gradient(circle, rgba(110, 129, 255, 0.32), transparent 58%),
-    rgba(16, 20, 34, 0.74);
-  box-shadow:
-    0 0 0 1px rgba(143, 162, 255, 0.18),
-    0 0 0 0.85rem rgba(89, 111, 214, 0.08),
-    0 0 34px rgba(97, 121, 255, 0.26);
-}
-
-.about-profile-logo::before,
-.about-profile-logo::after {
-  content: "";
-  position: absolute;
-  inset: 0.75rem;
-  border: 1px solid rgba(121, 143, 255, 0.18);
-  border-radius: inherit;
-}
-
-.about-profile-logo::after {
-  inset: 1.45rem;
-  border-color: rgba(121, 143, 255, 0.26);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .about-profile-logo img {
@@ -3126,7 +3082,7 @@
   height: 4.75rem;
   border-radius: 1.55rem;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .about-profile-card > h2 {
@@ -3179,10 +3135,10 @@
   width: 2.15rem;
   height: 2.15rem;
   place-items: center;
-  border: 1px solid rgba(184, 164, 255, 0.19);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
-  background: rgba(164, 132, 255, 0.08);
-  color: rgb(172, 137, 255);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgb(198, 202, 211);
 }
 
 .about-fact-row p,
